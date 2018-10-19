@@ -1,0 +1,31 @@
+\subsection{Emotion Recognition Chain} \label{emotion-recogniton-chain-subsec}
+
+Die Emotion Recognition Chain (ERC) besteht aus fünf Hauptschritten: 
+Datenerfassung, Vorverarbeitung, Segmentierung, Merkmalsextraktion und Klassifizierung (vgl. Abb. \ref{fig:erc}).
+In den folgenden Unterkapiteln wird für jeden Schritt eine allgemeine Erklärung gegeben. \\
+
+\todo[inline]{Artur: Need to update the erc image}
+
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{Images/erc.png} 
+\vspace{-0.3cm} 
+\caption{Emotion Recognition Chain: Zeitreihen-Datensätze werden von tragbaren Sensoren aufgenommen (Datenerfassung) und vorverarbeitet (Vorverarbeitung). Die Daten werden dann in Segmente unterteilt (Segmentierung), aus denen Merkmale extrahiert werden (Merkmalsextraktion). Mit den gewonnenen Merkmalen wird schließlich ein Klassifikator trainiert und anschließend dessen Ergebnisse bewertet (Klassifikation).}
+\label{fig:erc} 
+\end{figure} 
+%\vspace{0.5cm}
+
+
+% Unterkapitel 9.2.1
+\input{9-Mustererkennung/921-datenerfassung}
+
+% Unterkapitel 9.2.2
+\input{9-Mustererkennung/922-vorverarbeitung}
+
+% Unterkapitel 9.2.3
+\input{9-Mustererkennung/923-segmentation}
+
+% Unterkapitel 9.2.4
+\input{9-Mustererkennung/924-merkmalsextraktion}
+
+% Unterkapitel 9.2.5
+\input{9-Mustererkennung/925-klassifikation}

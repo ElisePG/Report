@@ -1,0 +1,33 @@
+\subsection{Grundlagen der Mustererkennung} \label{grundlagen-mustererkennung-subsec}
+
+
+Mustererkennung (enlg. ``pattern recognition") ist ein Unterthema des machinellen Lernens.
+Das Ziel besteht darin, automatisierte Systeme zu entwerfen, die hoch abstrakte Muster in Daten erkennen können.
+Konkret heißt dies, dass man Maschinen beibringen möchte komplexer Aufgaben zu lösen, welche vom Menschen nahzu mühlelos und natürlich erledigt werden können.
+Typische Beispiele für die zahlreichen Anwendungsbereiche sind die Objekterkennung, Spracherkennung sowie die Erkennung und Verfolgung in Bildern. 
+Die Emotionserkennung ist ein Anwendungsbereich der Mustererkennung.
+Die Hauptidee hinter der Lösung eines Mustererkennung-Problems ist es, dieses als Klassifikationsproblem zu übersetzen, wobei die zu erkennende Mustern die unterschiedliche Klassen bilden. 
+Die vom Mustererkennungs-System eingegebenen Daten werden dann verarbeitet und der ``am nächsten liegenden" Klasse zugeordnet.
+Beispielsweise können bei der Emotionserkennung die Eingangsdaten Bilder oder physiologische Signale sein, die in verschiedene Klassen eingeteilt werden, welche jeweils einer Emotion entsprechen. \\
+
+Ein wichtiger Teil eines jeden Mustererkennung-Problems ist der Lernansatz, mit welchem die Maschine lernen soll die Muster in den Daten zu erkennen. 
+Traditionell werden zwei Ansätze verwendet:
+
+\begin{itemize}%[noitemsep]
+  \item \underline{Überwachter Lernansatz:}
+  Dieser Ansatz kann nur verwendet werden, wenn vor der Verarbeitung der Daten ein Datenbeschriftungsschritt durchgeführt wurde.
+  In diesem Schritt wird jedem Element des Datensatzes ein Etikett (engl. ``label") zugewiesen, das angibt, welcher Klasse der jeweilige Datenpunkt zugeordnet werden kann.
+  Die zusätzlichen Informationen, die die Etiketten liefern, werden als Grundlage verwendet, um sie mit der Vorhersage des Systems zu vergleichen und zu korrigieren, wenn sie nicht gleich sind.
+
+  \item \underline{Unüberwachter Lernansatz:}
+  Dieser Ansatz wird verwendet, wenn keine Etiketten für die Daten vorhanden sind.
+  Unüberwachte Lerntechniken zielen darauf ab, der Maschine beizubringen, Muster in den Daten selbst zu finden. 
+  Sie werden meist verwendet, um Einblicke in Daten zu erhalten, deren Struktur unbekannt ist.
+\end{itemize} %\vspace{0.5cm}
+
+
+Überwachtes Lernen liefert aktuell weit bessere Ergebnisse, jedoch ist die Beschriftung mit Etiketten der Daten nicht immer einfach oder teilweise sogar gar nicht möglich (z.B. wenn die Datenmenge sehr groß ist oder wenn Unsicherheit über die Vergabe der Etiketten besteht).
+Aus diesem Grund wächst das Interesse an unüberwachter Lernansätzen.
+Diese Ansätze sind jedoch schwierig zu benutzen, da sie eine große Menge an Daten voraussetzen.
+Kompromisse sind mit semi-überwachten Lernansätzen möglich, bei denen die Daten für einen Teil des Datensatzes (aber nicht für den ganzen Datensatz) mit Etiketten beschriftet und damit bekannt sind.
+In diesem Fall kann eine Mischung aus überwachten und Unüberwachter Techniken angewendet werden \cite{Zhu2008}.
