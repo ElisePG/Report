@@ -1,6 +1,4 @@
 
-
-
 %\usepackage{ngerman}
 \usepackage[utf8]{inputenc}
 \usepackage{geometry}
@@ -29,17 +27,23 @@
 %\usepackage{rotating}
 %\usepackage{math}
 \usepackage{titlesec}
+\usepackage{etoolbox}
+\usepackage{acronym}
 
 
 \geometry{left=2cm,top=2cm,right=2cm,bottom=2cm}
 
-\renewcommand{\familydefault}{\sfdefault}
+
+% define line line spacing
+%\renewcommand{\baselinestretch}{1.2}
+
+\renewcommand{\familydefault}{\sfdefault} %font
+%\fontfamily{cmr}\selectfont %wie bsc
+
 
 \definecolor{kolor}{RGB}{0,0,0}
 \definecolor{maincol}{RGB}{178,201,225}
 \definecolor{darkcol}{RGB}{0,78,155}
-
-
 
 
 
@@ -57,7 +61,7 @@
 
 \renewcommand{\figurename}{Abbildung}
 \renewcommand{\tablename}{Tabelle}
-
+\renewcommand{\refname}{Referenzen}
 
 \titleformat*{\section}{\huge\bfseries}
 \titleformat*{\section}{\huge\bfseries}
@@ -67,8 +71,9 @@
 \titleformat*{\subparagraph}{\Large\bfseries}
 
 
-\usepackage{etoolbox}
+
 \makeatletter
 \patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
 \patchcmd{\ttlh@hang}{\noindent}{}{}{}
+\patchcmd{\@part}{\markboth{}{}}{\partmark{#1}}{}{} % \part in header
 \makeatother
