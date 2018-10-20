@@ -1,0 +1,18 @@
+\subsubsection{Vorverarbeitung} \label{vorverarbeitung-subsubsec}
+
+\todo[inline,color=green!40]{Verantwortlich: Artur \\
+- Bereit zum Korrekturlesen.}
+
+Das Ziel der Vorverarbeitung ist die "Verbesserung" der Daten für die nachfolgenden Schritte der ERC. In der Regel ist es dadurch besser möglich Muster in Daten erkennen zu können. Vorverarbeite Daten erreicht man durch Anwenudng von z.B. Filterung (Rauschunterdruckung), Normierung oder Reduzierung von unerwünschten oder unbedeutenden Datenteilen. \\
+
+
+\todo[inline]{Fehl am Platz, das kommt erst später.}
+
+Normalisierungstechniken wurden auf dem gesamten Datensatz angewendet. 
+Wir haben insbesondere die Standardnormalisierung verwendet, welche den Mittelwert der Daten auf Null setzt und die Einheitsvarianz ergibt \cite{grus15}. 
+Die Formel für die Standardnormierung lautet:
+\begin{equation} 
+\Large{ {x'={\frac {x-{\overline {x}}}{\sigma }}} } 
+\label{equ:norm} \end{equation} %\vspace{0.5cm}
+
+wobei $ x $ ein Datenpunkt eines Sensorkanales, $ \overline{x} $ ist der Durchschnitt der Gesamtheit für diesen Sensorkanal und $ \sigma $ ist die entsprechende Standardabweichung. \\
