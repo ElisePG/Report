@@ -19,9 +19,10 @@ $(MAINDOC).ps :	$(MAINDOC).tex
 #		$(PSPDF) $(MAINDOC).ps		
 
 clean:
-	rm -f *~ *.aux *.log *.dvi *.bak *.pdf *.ps *.out *.backup *.zip *.bbl *.blg *.toc *.new *.ind *.idx *.ilg *.bcf *.lof *.lot *.xml *.not
-	rm -f */*~ */*.aux */*.log */*.dvi */*.bak */*.pdf */*.ps */*.out */*.backup */*.zip */*.bbl */*.blg */*.toc */*.new */*.bcf */*.lof */*.lot */*.xml */*.not
+	rm -f *~ *.aux *.log *.dvi *.bak *.ps *.out *.backup *.zip *.bbl *.blg *.toc *.new *.ind *.idx *.ilg *.bcf *.lof *.lot *.xml *.not
+	rm -f */*~ */*.aux */*.log */*.dvi */*.bak */*.ps */*.out */*.backup */*.zip */*.bbl */*.blg */*.toc */*.new */*.bcf */*.lof */*.lot */*.xml */*.not
 
 
 okular:
 	okular $(MAINDOC).pdf &
+

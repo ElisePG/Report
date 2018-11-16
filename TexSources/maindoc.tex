@@ -14,12 +14,17 @@
 \clearpage
 
 
+% Header hinzufuegen
+\pagestyle{fancy} \fancyhf{} \rhead{\leftmark} \cfoot{\thepage}
+
+
 % Part 0 - Grundlagen
 \input{Part-0/part-0.tex}
 
 
 % Part 1
 \newpage
+\fancyhf{} \cfoot{\thepage} \rhead{\leftmark, \hspace{0.2cm} PART I} % Header Part 1
 \part{Erster Prototype}
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 \input{Part-1/part-1.tex}
@@ -27,6 +32,7 @@
 
 % Part 2
 \newpage
+\fancyhf{} \cfoot{\thepage} \rhead{\leftmark, \hspace{0.2cm} PART II} % Header Part 2
 \part{Zweiter Prototype}
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 \input{Part-2/part-2.tex}
@@ -34,6 +40,7 @@
 
 % Part 3
 \newpage
+\fancyhf{} \cfoot{\thepage} \rhead{\leftmark, \hspace{0.2cm} PART III} % Header Part 3
 \part{Dritter Prototype}
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 \input{Part-3/part-3.tex}
@@ -41,19 +48,22 @@
 
 % Part 4
 \newpage
+\fancyhf{} \cfoot{\thepage} \rhead{\leftmark, \hspace{0.2cm} PART IV} % Header Part 4
 \part{Vierter Prototype}
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 \input{Part-4/part-4.tex}
 
 
-% Part 5
+% Part 5 - Schlussteil
 \newpage
+\pagestyle{fancy} \fancyhf{} \rhead{\leftmark} \cfoot{\thepage} % Header Part 5
 \section{Zusammenfassung und Ausblick} \label{ende-sec}
 \input{Part-5/part-5.tex}
 
 
 % List of Figures
 \newpage 
+\pagestyle{plain} % Header entfernen
 \renewcommand{\listfigurename}{Abbildungsverzeichnis}
 \addcontentsline{toc}{section}{Abbildungsverzeichnis}
 \listoffigures
@@ -80,6 +90,6 @@
 % Referenzen
 \newpage
 \bibliographystyle{plain}
-\bibliography{References/artur,References/marcin}
+\bibliography{References/artur}
 
 \end{document}
