@@ -124,3 +124,55 @@ Ein Clustering-Algorithmus wird dann auf die Menge der Segmente $\alpha$ angewen
 Nach der Konvergenz werden die Clusterzentren als Codewörter betrachtet und zum Aufbau einer Sammlung von Codewörtern mit dem Namen ``Codebuch'' verwendet, wie in Abbildung \ref{fig:ca_construction} aus \cite{kimiaki_codebook_approach_2016} dargestellt. 
 Die Anzahl der Codewörter (d.h. die Größe des Codebuchs oder die Anzahl der Cluster) ist ein Hyperparameter des Verfahrens. Im Rahmen dieser Arbeit wurde ein k-means Clustering-Algorithmus verwendet, um die Codewörter auf den ELISE-Daten zu erhalten. \\
 
+
+\begin{figure}[h]\centering{
+\includegraphics[width=\textwidth]{Images/CA_construction.png}}
+\caption{ Codebuchkonstruktion: Zeitfenster von Daten werden zunächst extrahiert. Ein Clustering-Algorithmus wird dann auf das alle Zeitfenster angewendet, um Clusterzentren (und damit Codewörter) zu finden, die zum Aufbau des Codebuchs verwendet werden. }
+\label{fig:ca_construction} \end{figure} \vspace{0.5cm}
+
+
+\textbf{Codewortzuordnung \\}
+Nach der Konstruktion der Codewörter wird für jedes Zeitfenster $T$ ein histogrammbasierter Merkmalsvektor erstellt (vgl. Abbildung \ref{fig:ca_assignment}, entnommen aus \cite{kimiaki_codebook_approach_2016}). 
+Der zu klassifizierende Datensatz wird zunächst in Zeitfenster der Größe $T$ segmentiert, aus denen Segmente der Größe $\alpha$ nach dem gleichen Verfahren wie beim Aufbau des Codebuchs extrahiert werden. 
+Jedes Segment $\alpha$ wird dann mit den Codewörtern verglichen, so dass das "ähnlichste" Codewort gefunden werden kann. 
+Ein K-Bin-Histogramm (mit $K$ Anzahl der Codewörter) mit Informationen über die Anzahl der Male enthält, die jedes Codewort als am ähnlichsten zu den Segmenten $\alpha$ im Zeitfenster $T$ betrachtet wurde, wird dann erstellt und als Merkmalsvektor verwendet, um das zu klassifizierende Zeitfenster $T$ darzustellen. 
+Das Maß für die Ähnlichkeit von Codewörtern und Datensegmenten $\alpha$ basiert auf der euklidischen Entfernung. \\
+
+
+\begin{figure}[h]\centering{
+\includegraphics[width=\textwidth]{Images/CA_assignment.png}}
+\caption{ Codewortzuweisung: Jedes Datensegment wird mit den Codewörtern verglichen und ein Histogramm mit Informationen darüber, wie oft jedes Codewort als "am ähnlichsten" betrachtet wurde, wird erstellt. }
+\label{fig:ca_assignment} \end{figure} \vspace{0.5cm}
+
+
+Der zuvor beschriebene Ansatz wird als "Hard-Zuordnung" (engl. "hard assignment") bezeichnet, da Datensegmente einem einzigen Codewort zuzuordnen werden.
+Ein Nachteil dieser Vorgehensweise ist die mangelnde Flexibilität im Umgang mit potenzieller Unsicherheit bei der Codewortzuweisung, die z.B. auftreten kann, wenn ein Zeitfenster von Daten zwei oder mehr Codewörtern sehr ähnlich ist, da es nur einem zugeordnet werden kann. 
+Ein alternativer Ansatz dieses Problem zu umgehen ist die so genannte "Soft-Zuordnung" (engl. "soft assignment"). Hierbei werden auch alle Codewörter des Codebuchs Datensegmenten zuzuordnen, wobei die Ähnlichkeit jeweils als ein Bin im Histogramms dargestellt wird. Sehr ähnlich entspricht hierbei einem hohen Wert und nicht ähnlich einem kleinen Wert (anstatt 0 oder 1 wie in der Variante der Hard-Zuordnung). 
+Eine Kerneldichtefunktion (vgl. \cite{gemert_ieee_2009}) wird verwedent, um die Histogramm-Bins zu berechnen. Es wurde die folgende Funktion verwendet:
+
+
+\begin{equation} 
+\Large{ {f(\alpha,c_k,p) = \frac{1}{\gamma}} \frac{g(\alpha,c_k,p)}{\sum_{i=1}^{K} g(\alpha,c_i,p)}}
+\end{equation}
+\newline
+wobei $f(\alpha,c_k,p)$ die Ähnlichkeit des Segments $\alpha$ bezeichnet, das sich auf das Codewort $c_k$ bezieht. $p$ ist ein Glättungsparameter (ein großes $p$ bewirkt eine starke Glättung), $\gamma$ ist die Anzahl der Segmente im Zeitfenster $T$ und: \\
+\begin{equation} 
+\Large{ { g(\alpha,c_k,p) = \frac{1}{\sqrt{2 \pi p^{ 2 }}}} exp(\frac{d(\alpha,c_k)}{2p^{2}}). }
+\label{equ:codeword_assignment_2} \end{equation}
+\newline
+Um numerischen Unterlauf zu vermeiden, wird die Gleichung (\ref{equ:codeword_assignment_2}) zunächst mit dem Log-Sum-Exp-Trick (vgl. \cite{murphy_2012}) berechnet. \\
+
+
+\textbf{Fusion mehrerer Sensoren \\}
+Oftmals werden mehrere Sensoren verwendet, die gleichzeitig mehrere verschiedene Signale derselben Emotion erzeugen.
+Die Fusion dieser Signale ist wichtig, da sie die Genauigkeit der Emotionserkennung verbessern kann.
+Es gibt zwei verschiedene Ansätze (vgl. \cite{snoek_2005}): die frühe Fusion (engl. "early fusion") und die späte Fusion (engl. "late fusion"): 
+
+\begin{itemize}
+  \item \underline{Frühe Fusion:} In der Dimension $K \times S$ wird nur ein Klassifizierer benötigt, wobei $K$ die Anzahl der Codewörter und $S$ die Anzahl der Sensorkanäle ist. Der Klassifikator wird anhand der Verkettung von Codebuchmerkmalen trainiert und ausgewertet, die auf jedem Sensorkanal unabhängig voneinander berechnet wurden.
+
+  \item \underline{Späte Fusion:} Erfordert mindestens $S$-Klassifikatoren (einen für jeden Sensorkanal). Ein Klassifizierer wird unabhängig für jeden Sensorkanal unter Verwendung der für den betrachteten Sensor erhaltenen Codebuchmerkmale trainiert. Die Vorhersagen der $S$-Klassifikatoren werden dann fusioniert, um die Klassenbezeichnung des zu klassifizierenden Zeitfensters zu schätzen (z.B. mit einem zusätzlichen Klassifizierer).
+\end{itemize} \vspace{0.5cm}
+
+
+In dem ELISE Projekt verwenden wir den späten Fusionsansatz, weil er rechnerisch günstiger ist und von K. Shirahama (vgl. \cite{kimiaki_codebook_approach_2016}) empfohlen wird. \\
