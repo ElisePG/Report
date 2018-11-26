@@ -1,6 +1,6 @@
 \subsection{Merkmalsextraktion} \label{merkmalsextraftion-1}
 
-Wie bereits in Kapitel \ref{merkmalsextraktion-subsubsec} beschrieben, ist das Ziel der Merkmalsextraktion Charakteristiken und Merkmale in den Daten zu finden, die für das
+Wie bereits in Kapitel \ref{merkmalsextraktion-0} beschrieben, ist das Ziel der Merkmalsextraktion Charakteristiken und Merkmale in den Daten zu finden, die für das
 Klassifizierungsproblem von möglichst hoher Relevanz sind. Im Rahmen des ELISE Projektes haben wir verschiedene Vorgehensweisen angewendet. Im den folgenden Unterkapiteln werden diese vorgestellt. \\
 
 
@@ -16,7 +16,7 @@ Handgefertigte Merkmale sind in der Regel entweder einfache statistische Werte, 
 Diese Arbeit wurden statistische, Fourier-basierte und selbstentwickelte Merkmale getestet. \\
 
 \textbf{Statistische Merkmale \\}
-Die Tabelle \ref{tab:statistische} fasst die elf verschiedenen und in der Studie verwendeten statistischen Merkmale zusammen. Wir bezeichnen $\mathbf{x} = (x_1, x_2, ...., x_T) $ als Vektor, der die in einem Datenzeitfenster der Länge $T$ enthaltenen Sensorwerte für einen Sensorkanal darstellt. 
+Die Tabelle \ref{tab:statistische} fasst die elf verschiedenen und in der Studie verwendeten statistischen Merkmale zusammen \cite{bscpiet}. Wir bezeichnen $\mathbf{x} = (x_1, x_2, ...., x_T) $ als Vektor, der die in einem Datenzeitfenster der Länge $T$ enthaltenen Sensorwerte für einen Sensorkanal darstellt. 
 
 
 \begin{table}[h]
@@ -65,17 +65,17 @@ Die Tabelle \ref{tab:statistische} fasst die elf verschiedenen und in der Studie
 
 
 \textbf{Selbstentwickelte Merkmale \\}
-Es wurden zwei eigene Merkmale definiert: Nulldurchgang (engl. "zero crossing") und Anzahl der Spitzen (engl. "number of peaks"). Im Folgendem werden diese beiden Merkmale detailiert beschrieben. \\
+Es wurden zwei eigene Merkmale definiert \cite{bscpiet}. Nulldurchgang (engl. "zero crossing") und Anzahl der Spitzen (engl. "number of peaks"). Im Folgendem werden diese beiden Merkmale detailiert beschrieben. \\
 
 Das Nulldurchgang-Merkmal zählt die Häufigkeit, mit der das Signal eines Sensorkanals in einem Zeitfenster die Nulllinie überschreitet.
-Alle Sensorsignale wurden durch Normierung verarbeitet (vgl. Kapitel xxx) und damit wurden alle Mittelwerte auf Null zentriert.
+Alle Sensorsignale wurden durch Normierung verarbeitet (vgl. Kapitel \ref{vorverarbeitung-1}) und damit wurden alle Mittelwerte auf Null zentriert.
 Um zu vermeiden, dass Rauschen entlang der Nulllinie in dem Merkmal gezählt wird, wird nur ein Nulldurchgang in einer bestimmten Zeitspanne gezählt. \\
 
 
 Das Spitzenzähler-Merkmal bestimmt die Anzahl von loklanen Hochpunkten im Zeitsignal.
 Alle lokalen Maximen sind durch einen Onset (Startpunkt), eine Spitze und einen Offset (Endpunkt) gekennzeichnet (vgl. Abbildung \ref{fig:peaks}). 
 Jedes Vorkommen einer Onset/Offset-Paarung wird hierbei als Spitze gezählt.
-Onsets, Spitzen und Offsets werden durch die folgenden Operationen identifiziert \cite{BSc_Gouverneu}:
+Onsets, Spitzen und Offsets werden durch die folgenden Operationen identifiziert (vgl. \cite{bscGouverneur}):
 
 \begin{itemize} %[noitemsep]
   \item Ein Onset wird bestimmt, wenn der Wert des Signals an diesem Punkt nicht negativ ist und die Differenz zwischen ihm und dem nächsten größer als ein vordefinierter Schwellenwert (engl. "threshold") ist.
