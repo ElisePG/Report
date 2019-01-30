@@ -1,8 +1,5 @@
 \subsubsection{Klassifikation} \label{grundlagen-klassifikation-0}
 
-\todo[inline,color=green!40]{Verantworltich: Artur \\
-- Bereit zum Korrekturlesen.}
-
 Ziel des Klassifizierungsschritts ist es, ein Klassifizierungsmodell zu trainieren, das in der Lage ist, Objekte in den Daten (dargestellt durch ihren Merkmalsvektor) in die entsprechende Klasse zuzuordnen. \\
 
 
@@ -29,8 +26,7 @@ Datenpunkte werden durch nicht-ausgefüllte blaue Dreiecke bzw. rote Kreise für
 \includegraphics[width=8cm]{Images/svm.png} 
 \caption[Beispiel eines SVM-Klassifikators im zweidimensionalem Merkmalsraum]{Beispiel eines SVM-Klassifikators im zweidimensionalem Merkmalsraum: Die Datenpunkte beider Klassen (dargestellt durch nicht-ausgefüllte blaue Dreiecke und rote Kreise) sind durch eine Hyperebene getrennt, welche die Margin maximiert. Stützvektoren werden als ausgefüllte Dreiecke und Kreise dargestellt. }}
 \label{fig:svm} 
-\end{figure} \vspace{0.5cm}
-
+\end{figure} %\vspace{0.2cm}
 
 Es ist anzumerken, dass SVM nur mit zwei Klassen funktioniert, aber sie können zu $ Z $ Klassen verallgemeinert werden.
 Es gibt zwei Ansätze zur Verallgemeinerung auf $ Z $ Klassen:
@@ -38,7 +34,6 @@ Es gibt zwei Ansätze zur Verallgemeinerung auf $ Z $ Klassen:
   \item \underline{1 vs 1} besteht darin, Klassifikatoren für jedes Klassenpaar zu trainieren. Auf diese Weise werden $ Z(Z-1)/ 2$ Klassifikatoren trainiert, d.h. einen für jedes Klassenpaar.
   \item \underline{1 vs all} besteht darin, $ Z-1 $ Klassen als eine Klasse zu betrachten und die letzte als zweite Klasse anzunehmen, mit der der Klassifikator trainiert wird. Dies wird für jede Klasse wiederholt, was zu $ Z $ Klassifikatoren führt, d.h. einen für jede Klasse. \\
 \end{itemize}
-
 
 % Kernel Trick
 In der Praxis sind die Daten durch normales SVM fast nie linear trennbar.
@@ -58,8 +53,7 @@ wobei $ x $ und $ x' $ Vektoren des Merkmalsraums bezeichnen und $ \gamma $ der 
 \begin{figure}[h] \centering{
 \includegraphics[width=\textwidth]{Images/kernel_trick.png} 
 \vspace{-0.3cm} \caption[Beispiel für die Verwendung des Kernel-Tricks]{Beispiel für die Verwendung des Kernel-Tricks: Nicht-linear trennbare Daten in einem 2D-Merkmalsraum (links) können linear trennbar gemacht werden, wenn sie auf 3D projiziert werden (rechts) \cite{kernel_2013}.}}
-\label{fig:kernel_trick} \end{figure} \vspace{0.5cm}
-
+\label{fig:kernel_trick} \end{figure} %\vspace{0.5cm}
 
 % Overfitting
 Normales SVM verwendet sogenannte hard-margins, die versuchen, eine optimale Hyperebene zu schaffen, die keine Fehlklassifizierungen zulässt. 
@@ -70,9 +64,8 @@ Der soft-margin Parameter $C$ wird genutzt um die Anzahl der Fehlklassifikatione
 Je größer der Wert von $C$, desto weniger Fehleinstufungen sind zulässig.
 Umgekehrt erlauben kleine Werte von $C$ mehr Fehlklassifizierungen, um die Verallgemeinerungsfähigkeit des Klassifikators zu verbessern. \\
 
-
 \begin{figure}[h] \centering{
 \includegraphics[width=\textwidth]{Images/overfitting.png} 
 \vspace{-0.3cm} \caption[Beispiele für einen hard-margin SVM (links) und einen soft-margin SVM (rechts) in einem 2D-Merkmalsraum]{Beispiele für einen hard-margin SVM (links) und einen soft-margin SVM (rechts) in einem 2D-Merkmalsraum: Der hard-margin SVM trennt die beiden Klassen perfekt im Gegensatz zum Soft-Margin SVM, der einige Fehlklassifikationen zulässt. }}
 \label{fig:c-svm} \end{figure} 
-\vspace{0.5cm}
+%\vspace{0.5cm}
