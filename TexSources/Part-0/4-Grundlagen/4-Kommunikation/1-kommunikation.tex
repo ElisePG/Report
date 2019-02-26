@@ -1,0 +1,18 @@
+\subsection{Kommunikation} \label{grund-kommunikation}
+
+Zur Übertragung der gewonnenen Sensordaten, wie auch zur Kommunikation der einzelnen Teilkomponeneten untereinander, wurden verschiedene Technologien und Protokolle evaluiert.\\
+Die Implementierung erfolgte schlussendlich mit UDP Broadcasts und einem rudimentären Kommunikationsprotokoll.
+Für die Übertragung war es wichtig, dass die Implementierung sowohl auf Seiten der Unreal Engine, als auch beim Mikrocontroller und bei der Kontrollanwendung einfach und mit geringem Arbeitsaufwand möglich ist.
+Zugleich sollte auf eine einfache Wartbarkeit und die Möglichkeit die Verbindung "live" zu debuggen geachtet werden. \\
+Die ersten Tests erfolgten mit einer einfachen Ausgabe der Sensordaten über eine USB-Serial Verbindung.
+Da jedoch der Sensor abgesetzt und drahtlos Daten senden sollte, wurde dann beim ESP32 UDP Broadcasts als Kommunikationsweg gewählt. Neben der einfachen Implementierung auf allen Teilkomponenten ist hierbei auch die Möglichkeit einer 1:n Kommunikation gegeben.
+In Zukunft sollte darüber nachgedacht werden, Broadcasts durch Multicasts zu ersetzen, da dadurch in einem n:m Szenario eine einfachere Separierung der Datenströme der einzelnen Sensoren erfolgen kann. \\
+Jeder Teilnehmer wird durch eine einzigartige ID identifiziert, die in jedem Paket mitgesendet wird. \\
+[BILD EINFÜGEN UNTERSCHIEDLICHE DATENPAKETE]\\
+Der Sensor sendet hierbei nicht für jeden Datenwert ein Paket, sondern aggregiert immer 75 Datenwerte in ein Paket. Dabei werden die einzelnen Kanäle in 4 Pakete aufgeteilt.
+Paket 1 enthält die Sensordaten für Temperatur, GSR und EEG1. Paket 2 die für . Paket 3 für . Paket 4 zuletzt dann die Daten für IR_RAW. Diese Aggregierung und Aufteilung wurde durch Instabilitäten in Sensor Netzwerkstack erforderlich.
+Trotzdem ist durch diese Lösung weiterhin eine Datenrate von 250 Samples/Sekunde möglich. Diese liegt weit über dem theoretischen Minimum, was für eine verlustfreie Rekonstruktion des Signals nötig wäre, so dass auch weiterhin die Kommunikation robust gegenüber Störeinflüssen ist.
+
+
+
+\todo[inline]{Verantwortlich: Kevin, Jonas}
