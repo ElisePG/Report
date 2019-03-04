@@ -90,8 +90,13 @@ wobei $ p_{k}(x) $ mit der Energie des Singals $x$ verglichen werden kann, das d
 
 
 Um frequenzbezogene Merkmale zu extrahieren, wird das Leistungsspektrum der Signale in vier Frequenzbänder gleicher Länge unterteilt.
-Der Mittelwert, die Standard-Abweichung, das Maximum und das Minimum wurde dann auf jedem Frequenzband für jeden Sensorkanal extrahiert, was zu einem Prozess der Merkmalsextraktion aus normalisierten Datenrahmen führte, wie in Abbildung ?? dargestellt.
-\todo[inline]{Bilder einfügen. \\}
+Der Mittelwert, die Standard-Abweichung, das Maximum und das Minimum wurde dann auf jedem Frequenzband für jeden Sensorkanal extrahiert, was zu einem Prozess der Merkmalsextraktion aus normalisierten Datenrahmen führte, wie in Abbildung \ref{fig:fft} dargestellt. 
+
+\begin{figure}[h] \centering{
+\includegraphics[width=11cm]{Images/ttf.png}}
+\caption[Merkmalsextraktion aus frequenzbezogener Domain]{ Merkmalsextraktion aus frequenzbezogener Domain. } 
+\label{fig:fft} \end{figure} \vspace{0.5cm}
+
 
 Zusätzlich wurde für jeden Sensorkanal des gesamten Spektrums die Standard-Abweichung  extrahiert. Dies führt zu insgesamt $9 \ast (1 + 4 \ast 4) = 153$ Merkmalen im Frequenzbereich pro Zeitfenster. \\
 
@@ -208,3 +213,77 @@ Es gibt zwei verschiedene Ansätze (vgl. \cite{snoek_2005}): die frühe Fusion (
 
 
 In dem ELISE Projekt verwenden wir den späten Fusionsansatz, weil er rechnerisch günstiger ist und von K. Shirahama (vgl. \cite{kimiaki_codebook_approach_2016}) empfohlen wird. \\
+
+
+
+% Unterkapitel 
+\subsubsection{Merkmals Auswahl} \label{featureSelection-1}
+
+Um bessere Kombinationen von handgefertigten Merkmalen zu finden, kann ein Bottom-Up-Merkmal-Auswahlalgorithmus verwendet werden, der auf der Prüfung von Gruppen von Merkmalen mit zunehmender Größe basiert.
+Zunächst wird das Merkmal mit der höchsten Klassifizierungsperformance unter allen verfügbaren Merkmalen ausgewählt. 
+Anschließend wird die Performance von Gruppen von zwei Merkmalen, die sich aus dem ausgewählten Merkmal und der Reihe nach jedem anderem Merkmal zusammensetzen, werden dann getestet und das beste Paar wird ausgewählt. 
+Dieser Prozess wird so lange wiederholt wiederholt, bis alle relevanten Merkmale verwendet wurden. 
+Am Ende wird die beste Kombination von Merkmalen ausgewählt.
+Es sei darauf hingewiesen, dass es sich um einen heuristischen Algorithmus handelt, so dass es möglich ist, dass unter Umständen die absolut beste Kombination nicht zwingend gefunden wird. \\
+
+Der folgende Pseudocode beschreibt unseren Algorithmus zur Merkmalsauswahl: \\
+
+\begin{algorithm}[H]
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+    
+    %\vspace{0.1cm}
+
+    %\underline{function feature-selection} $(features, C, kernel, \gamma)$\;
+    
+    \textbf{Input parameters:}  \\
+    \hspace{0.5cm} - $C$, $\gamma$ = C-SVM params \\
+    \hspace{0.5cm} - $candidates$ = $[f1,f2,...,fn]$ list of n features to test \\
+    \hspace{0.5cm} - $training\_set$ = set of all features computed on the training data \\
+    \hspace{0.5cm} - $testing\_set$ = set of all features computed on the testing data 
+    %\vspace{0.1cm}
+    
+    \textbf{Output parameters:} \\
+    \hspace{0.5cm} - $best\_feature\_combination$ = list of the best features \\
+    \hspace{0.5cm} - $best\_accuracy$ = classification accuracy obtained by the best features \\
+    \hspace{0.5cm} - $feature\_ranking$ = list ranking features in decreasing order of relevance
+    %\vspace{0.1cm}
+    
+    \hrulefill 
+    
+    %\vspace{0.1cm}
+    %\textbf{Pseudo-code:} \\
+    \textbf{Begin} \\
+    $candidates\_to\_test$ = $candidates$ \\
+    $current\_best\_features$ = $\emptyset$ \\
+    $current\_best\_accuracy$ = -1 \\
+    $all\_time\_best\_features$ = $\emptyset$ \\ 
+    $all\_time\_best\_accuracy$ = -1 \\
+    $feature\_ranking$ = $\emptyset$ 
+
+     \While{$candidates\_to\_test \neq \emptyset$}{
+         \For{$feature f$ \textbf{in} $candidates\_to\_test$}{
+             $trained\_svm$ = $train\_svm(C, \gamma, training\_set, current\_best\_features \cup \{f\}$) \\
+             $accuracy$ = $evaluate\_svm(trained\_svm, testing\_set, current\_best\_features \cup \{f\}$)
+        
+             \If{$accuracy > current\_best\_accuracy$}{
+                 $best\_feature\_of\_iteration$ = $f$ \\
+                 $current\_best\_accuracy$ = $accuracy$
+            }
+                
+             \If{$accuracy > all\_time\_best\_accuracy$}{
+                 $all\_time\_best\_features$ = $current\_best\_features \cup \{f\}$ \\
+                $all\_time\_best\_accuracy$ = $accuracy$ 
+            }
+        }
+         $feature\_ranking$ = $feature\_ranking \cup [best\_feature\_of\_iteration]$ \\
+         $current\_best\_features$ = $current\_best\_features \cup [best\_feature\_of\_iteration]$ \\
+        $candidates\_to\_test$ = $candidates\_to\_test \setminus [best\_feature\_of\_iteration]$ \\
+    }
+     \textbf{return} $all\_time\_best\_features, all\_time\_best\_accuracy, feature\_ranking$
+    
+
+    %\vspace{0.3cm}
+    \caption{ Merkmalsauswahl-Algorithmus. }
+\end{algorithm}
+\vspace{0.5cm}
