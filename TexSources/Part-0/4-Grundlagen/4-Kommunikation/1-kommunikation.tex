@@ -2,23 +2,23 @@
 
 \todo[inline]{Verantwortlich: Kevin, Jonas}
 
-Zur Übertragung der gewonnenen Sensordaten, wie auch zur Kommunikation der einzelnen Teilkomponeneten untereinander, wurden verschiedene Technologien und Protokolle evaluiert. \\
+Zur {\"u}bertragung der gewonnenen Sensordaten, wie auch zur Kommunikation der einzelnen Teilkomponeneten untereinander, wurden verschiedene Technologien und Protokolle evaluiert. \\
 
-Die Implementierung erfolgte schlussendlich mit UDP Broadcasts und einem rudimentären Kommunikationsprotokoll.
-Für die Übertragung war es wichtig, dass die Implementierung sowohl auf Seiten der Unreal Engine, als auch beim Mikrocontroller und bei der Kontrollanwendung einfach und mit geringem Arbeitsaufwand möglich ist.
-Zugleich sollte auf eine einfache Wartbarkeit und die Möglichkeit die Verbindung ``live'' zu debuggen geachtet werden. \\
+Die Implementierung erfolgte schlussendlich mit UDP Broadcasts und einem rudiment{\"a}ren Kommunikationsprotokoll.
+F{\"u}r die {\"u}bertragung war es wichtig, dass die Implementierung sowohl auf Seiten der Unreal Engine, als auch beim Mikrocontroller und bei der Kontrollanwendung einfach und mit geringem Arbeitsaufwand m{\"o}glich ist.
+Zugleich sollte auf eine einfache Wartbarkeit und die M{\"o}glichkeit die Verbindung ``live'' zu debuggen geachtet werden. \\
 
-Die ersten Tests erfolgten mit einer einfachen Ausgabe der Sensordaten über eine USB-Serial Verbindung.
-Da jedoch der Sensor abgesetzt und drahtlos Daten senden sollte, wurde dann beim ESP32 UDP Broadcasts als Kommunikationsweg gewählt. Neben der einfachen Implementierung auf allen Teilkomponenten ist hierbei auch die Möglichkeit einer 1:n Kommunikation gegeben.
-In Zukunft sollte darüber nachgedacht werden, Broadcasts durch Multicasts zu ersetzen, da dadurch in einem n:m Szenario eine einfachere Separierung der Datenströme der einzelnen Sensoren erfolgen kann. \\
+Die ersten Tests erfolgten mit einer einfachen Ausgabe der Sensordaten {\"u}ber eine USB-Serial Verbindung.
+Da jedoch der Sensor abgesetzt und drahtlos Daten senden sollte, wurde dann beim ESP32 UDP Broadcasts als Kommunikationsweg gew{\"a}hlt. Neben der einfachen Implementierung auf allen Teilkomponenten ist hierbei auch die M{\"o}glichkeit einer 1:n Kommunikation gegeben.
+In Zukunft sollte dar{\"u}ber nachgedacht werden, Broadcasts durch Multicasts zu ersetzen, da dadurch in einem n:m Szenario eine einfachere Separierung der Datenstr{\"o}me der einzelnen Sensoren erfolgen kann. \\
 
 Jeder Teilnehmer wird durch eine einzigartige ID identifiziert, die in jedem Paket mitgesendet wird. \\
 
-(BILD EINFÜGEN UNTERSCHIEDLICHE DATENPAKETE) \\
+(BILD EINF{\"u}GEN UNTERSCHIEDLICHE DATENPAKETE) \\
 
-Der Sensor sendet hierbei nicht für jeden Datenwert ein Paket, sondern aggregiert immer 75 Datenwerte in ein Paket. Dabei werden die einzelnen Kanäle in 4 Pakete aufgeteilt.
-Paket 1 enthält die Sensordaten für Temperatur, GSR und EEG1. 
-Paket 2 die für. 
-Paket 3 für. 
-Paket 4 zuletzt dann die Daten für IR-RAW. Diese Aggregierung und Aufteilung wurde durch Instabilitäten in Sensor Netzwerkstack erforderlich.
-Trotzdem ist durch diese Lösung weiterhin eine Datenrate von 250 Samples/Sekunde möglich. Diese liegt weit über dem theoretischen Minimum, was für eine verlustfreie Rekonstruktion des Signals nötig wäre, so dass auch weiterhin die Kommunikation robust gegenüber Störeinflüssen ist.
+Der Sensor sendet hierbei nicht f{\"u}r jeden Datenwert ein Paket, sondern aggregiert immer 75 Datenwerte in ein Paket. Dabei werden die einzelnen Kan{\"a}le in 4 Pakete aufgeteilt.
+Paket 1 enth{\"a}lt die Sensordaten f{\"u}r Temperatur, GSR und EEG1. 
+Paket 2 die f{\"u}r. 
+Paket 3 f{\"u}r. 
+Paket 4 zuletzt dann die Daten f{\"u}r IR-RAW. Diese Aggregierung und Aufteilung wurde durch Instabilit{\"a}ten in Sensor Netzwerkstack erforderlich.
+Trotzdem ist durch diese L{\"o}sung weiterhin eine Datenrate von 250 Samples/Sekunde m{\"o}glich. Diese liegt weit {\"u}ber dem theoretischen Minimum, was f{\"u}r eine verlustfreie Rekonstruktion des Signals n{\"o}tig w{\"a}re, so dass auch weiterhin die Kommunikation robust gegen{\"u}ber St{\"o}reinfl{\"u}ssen ist.

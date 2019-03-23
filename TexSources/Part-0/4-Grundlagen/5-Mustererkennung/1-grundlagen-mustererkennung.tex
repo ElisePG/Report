@@ -4,35 +4,35 @@
 - Bereit zum Korrekturlesen.}
 
 Mustererkennung (enlg. ``pattern recognition") ist ein Unterthema des machinellen Lernens.
-Das Ziel besteht darin, automatisierte Systeme zu entwerfen, die hoch abstrakte Muster in Daten erkennen können.
-Konkret heißt dies, dass man Maschinen beibringen möchte komplexer Aufgaben zu lösen, welche vom Menschen nahzu mühlelos und natürlich erledigt werden können.
-Typische Beispiele für die zahlreichen Anwendungsbereiche sind die Objekterkennung, Spracherkennung sowie die Erkennung und Verfolgung in Bildern. 
+Das Ziel besteht darin, automatisierte Systeme zu entwerfen, die hoch abstrakte Muster in Daten erkennen k{\"o}nnen.
+Konkret hei{\ss}t dies, dass man Maschinen beibringen m{\"o}chte komplexer Aufgaben zu l{\"o}sen, welche vom Menschen nahzu m{\"u}hlelos und nat{\"u}rlich erledigt werden k{\"o}nnen.
+Typische Beispiele f{\"u}r die zahlreichen Anwendungsbereiche sind die Objekterkennung, Spracherkennung sowie die Erkennung und Verfolgung in Bildern. 
 Die Emotionserkennung ist ein Anwendungsbereich der Mustererkennung.
-Die Hauptidee hinter der Lösung eines Mustererkennung-Problems ist es, dieses als Klassifikationsproblem zu übersetzen, wobei die zu erkennende Mustern die unterschiedliche Klassen bilden. 
-Die vom Mustererkennungs-System eingegebenen Daten werden dann verarbeitet und der ``am nächsten liegenden" Klasse zugeordnet.
-Beispielsweise können bei der Emotionserkennung die Eingangsdaten Bilder oder physiologische Signale sein, die in verschiedene Klassen eingeteilt werden, welche jeweils einer Emotion entsprechen. \\
+Die Hauptidee hinter der L{\"o}sung eines Mustererkennung-Problems ist es, dieses als Klassifikationsproblem zu {\"u}bersetzen, wobei die zu erkennende Mustern die unterschiedliche Klassen bilden. 
+Die vom Mustererkennungs-System eingegebenen Daten werden dann verarbeitet und der ``am n{\"a}chsten liegenden" Klasse zugeordnet.
+Beispielsweise k{\"o}nnen bei der Emotionserkennung die Eingangsdaten Bilder oder physiologische Signale sein, die in verschiedene Klassen eingeteilt werden, welche jeweils einer Emotion entsprechen. \\
 
 Ein wichtiger Teil eines jeden Mustererkennung-Problems ist der Lernansatz, mit welchem die Maschine lernen soll die Muster in den Daten zu erkennen. 
-Traditionell werden zwei Ansätze verwendet:
+Traditionell werden zwei Ans{\"a}tze verwendet:
 
 \begin{itemize}%[noitemsep]
-  \item \underline{Überwachter Lernansatz:}
-  Dieser Ansatz kann nur verwendet werden, wenn vor der Verarbeitung der Daten ein Datenbeschriftungsschritt durchgeführt wurde.
+  \item \underline{{\"u}berwachter Lernansatz:}
+  Dieser Ansatz kann nur verwendet werden, wenn vor der Verarbeitung der Daten ein Datenbeschriftungsschritt durchgef{\"u}hrt wurde.
   In diesem Schritt wird jedem Element des Datensatzes ein Etikett (engl. ``label") zugewiesen, das angibt, welcher Klasse der jeweilige Datenpunkt zugeordnet werden kann.
-  Die zusätzlichen Informationen, die die Etiketten liefern, werden als Grundlage verwendet, um sie mit der Vorhersage des Systems zu vergleichen und zu korrigieren, wenn sie nicht gleich sind.
+  Die zus{\"a}tzlichen Informationen, die die Etiketten liefern, werden als Grundlage verwendet, um sie mit der Vorhersage des Systems zu vergleichen und zu korrigieren, wenn sie nicht gleich sind.
 
-  \item \underline{Unüberwachter Lernansatz:}
-  Dieser Ansatz wird verwendet, wenn keine Etiketten für die Daten vorhanden sind.
-  Unüberwachte Lerntechniken zielen darauf ab, der Maschine beizubringen, Muster in den Daten selbst zu finden. 
+  \item \underline{Un{\"u}berwachter Lernansatz:}
+  Dieser Ansatz wird verwendet, wenn keine Etiketten f{\"u}r die Daten vorhanden sind.
+  Un{\"u}berwachte Lerntechniken zielen darauf ab, der Maschine beizubringen, Muster in den Daten selbst zu finden. 
   Sie werden meist verwendet, um Einblicke in Daten zu erhalten, deren Struktur unbekannt ist.
 \end{itemize} %\vspace{0.5cm}
 
 
-Überwachtes Lernen liefert aktuell weit bessere Ergebnisse, jedoch ist die Beschriftung mit Etiketten der Daten nicht immer einfach oder teilweise sogar gar nicht möglich (z.B. wenn die Datenmenge sehr groß ist oder wenn Unsicherheit über die Vergabe der Etikette besteht).
-Aus diesem Grund wächst das Interesse an unüberwachter Lernansätzen.
-Diese Ansätze sind jedoch schwierig zu benutzen, da sie eine große Menge an Daten voraussetzen.
-Kompromisse sind mit semi-überwachten Lernansätzen möglich, bei denen die Daten für einen Teil des Datensatzes (aber nicht für den ganzen Datensatz) mit Etiketten beschriftet und damit bekannt sind.
-In diesem Fall kann eine Mischung aus überwachten und Unüberwachter Techniken angewendet werden \cite{Zhu2008}. \\
+{\"u}berwachtes Lernen liefert aktuell weit bessere Ergebnisse, jedoch ist die Beschriftung mit Etiketten der Daten nicht immer einfach oder teilweise sogar gar nicht m{\"o}glich (z.B. wenn die Datenmenge sehr gro{\ss} ist oder wenn Unsicherheit {\"u}ber die Vergabe der Etikette besteht).
+Aus diesem Grund w{\"a}chst das Interesse an un{\"u}berwachter Lernans{\"a}tzen.
+Diese Ans{\"a}tze sind jedoch schwierig zu benutzen, da sie eine gro{\ss}e Menge an Daten voraussetzen.
+Kompromisse sind mit semi-{\"u}berwachten Lernans{\"a}tzen m{\"o}glich, bei denen die Daten f{\"u}r einen Teil des Datensatzes (aber nicht f{\"u}r den ganzen Datensatz) mit Etiketten beschriftet und damit bekannt sind.
+In diesem Fall kann eine Mischung aus {\"u}berwachten und Un{\"u}berwachter Techniken angewendet werden \cite{Zhu2008}. \\
 
 
-Im Rahmen des ELISE-Projekts werden mit Hilfe von Mustererkennungsverfahren eindimensionale Zeitsignale von physiologischen Sensoren in Echtzeit für die Erkennung von drei Emotionen verarbeitet: Glück, Frustation und Langeweile. Um den Emotionsklassifizierer aufzubauen, wird ein standardmäßiger, überwachter Lernansatz namens Emotion Recognition Chain verwendet, der im folgendem Kapitel beschrieben wird. \\
+Im Rahmen des ELISE-Projekts werden mit Hilfe von Mustererkennungsverfahren eindimensionale Zeitsignale von physiologischen Sensoren in Echtzeit f{\"u}r die Erkennung von drei Emotionen verarbeitet: Gl{\"u}ck, Frustation und Langeweile. Um den Emotionsklassifizierer aufzubauen, wird ein standardm{\"a}{\ss}iger, {\"u}berwachter Lernansatz namens Emotion Recognition Chain verwendet, der im folgendem Kapitel beschrieben wird. \\
