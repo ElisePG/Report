@@ -1,9 +1,20 @@
 \subsection{Ergebnisse des Codebook Approach} \label{ergebnisse-codebook-approach-subsec}
 
 
-{\"a}hnlich wie bei den handgefertigten Merkmalen haben wir die Daten mit einer Normalisierungstechnik vorverarbeitet und dann die Segmentierung verwendet. Die Zeitfensterparameter sind identlisch wie bei der Studie mit den handgefertigten Merkmalen.
+{\"A}hnlich wie bei den handgefertigten Merkmalen haben wir die Daten mit einer Normalisierungstechnik vorverarbeitet und dann die Segmentierung verwendet. Die Zeitfensterparameter sind identlisch wie bei der Studie mit den handgefertigten Merkmalen.
 F{\"u}r die Klassifizierung haben wir SVM mit Soft-Margins und dem RBF-Kernel benutzt. 
 Um die optimalen Parameter des SVM-Klassifikators zu bestimmen (z.B. Soft-Margin $C$ und Kernelparameter $\gamma$), wurde hier wieder die Gitter-Suche angewendet. \\
 
 
 Die Ergebnisse, die wir mit dem CA mit fester Zuordnung (hard assignment) und $C = 8$, $\gamma = 0,002$ f{\"u}r jeden Probanden erhielten, waren 52\%, 38\% und 38\%, was einem Durchschnitt von 42,67\% entspricht. CA mit Soft-Assignment wurden ebenfalls getestet, lieferte aber schlechtere Ergebnisse als CA mit Hard-Assignment. In diesem speziellen Datensatz schneidet der CA also schlechter ab als die handgefertigten Merkmale.
+
+
+
+
+
+
+
+
+\subsection{Ergebnisse der Deep Neutral Networks} \label{ergebnisse-dnn}
+
+Die Verwendung von DNNs zur Extraktion von Merkmalen (z.B. Multi-Layer-Perceptron, Convolutional Neural oder Long-Short-Term-Memory Networks) wurden zwar intensiv getestet (siehe \cite{bscschnieber18}), diese Ansätze erreichten aber leider nicht so gute Ergebnisse, wie z.B. die oben vorgestellten Ergebisse der handgefertigten Merkmale. \\

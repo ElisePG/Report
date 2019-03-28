@@ -199,6 +199,71 @@ wobei $f(\alpha,c_k,p)$ die {\"a}hnlichkeit des Segments $\alpha$ bezeichnet, da
 Um numerischen Unterlauf zu vermeiden, wird die Gleichung (\ref{equ:codeword_assignment_2}) zun{\"a}chst mit dem Log-Sum-Exp-Trick (vgl. \cite{murphy_2012}) berechnet. \\
 
 
+
+
+
+
+% Unterkapitel 
+\subsubsection{Deep Neutral Networks (DNN)} \label{dnn-1}
+Im Rahmen des ELISE Projektes, wurden verschiedene Deep Neutral Networks (DNN) getestet\cite{bscschnieber18}.
+Die Standardarchitektur Multilayer Preceptron (MLP), Long Short-Term Memory Network (LSTM), ein CNN/LSTM Hybrid, eigene MLP-Architekturen sowie multimodale MLP (vgl. Abbildung ???) und multimodale CNN wurden bewertet.
+Alle Ansätze erhalten Datenfenster der Größe $T \times S$ als Input, mit $T = 420$ aufgenommene Datenpunkte pro Sekunde jedes Sensors und $S = 9$ Sensorkanäle. 
+Jedes Modell hat einen Softmax-Output-Layer mit vier Neuronen, jeweils einen pro Klasse.
+Da die Softmax-Funktion monoton ist und die Summe aller Ergebnisse immer eins ergibt, ist jedes einzelne Ergebnis auch gleichzeitig die Wahrscheinlichkeit, dass the aktuelle Input zu einer Klasse gehört.
+Alle Modelle wurden mit einem ADADELTA-Optimierer\cite{zeiler12} trainiert, wobei die entsprechenden Hyperparameter (z.B. Anzahl der Layer, Neutronen pro Layer, ...) manuel ausgewählt wurden. \\
+
+Der verwendete MLP hat drei zusätzliche verstecke Layer mit 1.000 Neutronen und ReLU-Aktivierung\cite{nair12}.
+Alle Layer sind verbunden, d.h. der Output aller Neutronen eines Layers werden als Input eines jeden einzelnen Neutronen auf den nächsten Layer. \\
+
+
+(BILD Architektur eines MLP Network) \\
+
+
+Die verwendete CNN besteht aus drei faltungsbedingten Layern mit zehn Filter-Kernels und jeweils einem ReLU.
+Die Kernel-Größe ist $41 \times 1$ for den ersten Layer, $21 \times 1$ für den zweiten und $11 \times 1$ für den dritten Layer.
+Da die zweite Dimension immer eins ist, funktioniert jeder Kernel immer nur an einem Sensorkanal.
+Alle faltungsbedingten Layer werden gefolgt von einem Maxpooling-Layer der Größe $2 \times 1$, welcher den Output um den Faktor zwei downsamplet. \\
+
+
+(BILD Architektur eines CNN Network) \\
+
+
+
+Für MLP und CNN wurde zusätzlich ein Multimodal-Network getestet, welche auch bekannt als mMLP bzw. mCNN sind.
+Anstatt das ganze Zeitfenster als Input zu benutzen, wird hier jeweils ein Neutral-Network mit drei versteckten Layern für jeden Sensorkanal verwendet (siehe Abbildung ???).
+Die Ergebnisse wurden zusammengeknüpft und als Input für ein zusätzlichen verbindeten Layer genutzt. \\
+
+
+(BILD Eigene Architektur eines Multimodal-MLP-Network) \\
+
+
+LSTMs\cite{hochreiter97} sind eine spezielle Form von wiederkehrenden Neutral-Networks.
+Sie sind in der Lage, Informationen zu speichern, um Muster über die Zeit zu erkennen. 
+Nicht wiederkehrende Neutral-Networks lernen im Gegensatz dazu nur von den aktuellen Input-Daten.
+Das Verhalten über die Zeit gesehen wird von den sogenannten ``Gates'' kontrolliert, welche den Informationsfluß innerhalb eines Networks beeinflußen können.
+Das ``Input-Gate'' sakralisiert den Einfluss des neuen Daten-Inputs, während das ``Forget Date'' den Einfluss der gespeicherten Informationen über den vorherigen Zustand des Neurons steuert.
+Am Ende wird der neue Output von dem ``Output-Gate'' modifiziert. \\
+
+
+(BILD Architektur eines LSTM-Networks) \\
+
+
+Das CNN/LSTM-Hybrid-Modell stapelt einfach die beiden Networks.
+Die ersten Layer sind die der vorhin geschriebenen CNN, welche dann von den Layern der LSTM-Layer gefolgt werden. \\
+
+
+(BILD Architektur eines CNN/LSTM-Hybriden.) \\
+
+
+
+
+
+
+
+
+
+
+
 \textbf{Fusion mehrerer Sensoren \\}
 Oftmals werden mehrere Sensoren verwendet, die gleichzeitig mehrere verschiedene Signale derselben Emotion erzeugen.
 Die Fusion dieser Signale ist wichtig, da sie die Genauigkeit der Emotionserkennung verbessern kann.
