@@ -1,15 +1,33 @@
 \todo[inline]{Verantwortlich: Artur}
 
 
-
-% Unterkapitel 
-%\input{Part-4/6-Ergebnisse/1-hc-features}
-
-
-% Unterkapitel 
-%\input{Part-4/6-Ergebnisse/2-codebook-approach}
+Wegen anderer Studien, wurden jeweils DNNs für ein zwei-Klassen- und ein drei-Klassen-Mustererkennungsproblem getestet.
+Zudem wurde zum einem Probanden-abhängige und zum anderen Probanden-unabhängige Datensätze verwendet, um z.B. Overfitting feststellen zu können.
+Im Folgendem sind die F1-Scores für Errenung und Wertigkeit (entsprechend dem Circumplex-Modell) vorgestellt. \\ 
 
 
-% Unterkapitel
-%\input{Part-4/6-Ergebnisse/3-analyse}
+\begin{table}[H] \centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Erregung F1-Score (\%)} & \textbf{Probanden-abhängig} & \textbf{Probanden-unabhängig} \\ \hline
+\textbf{2 Klassen} & 90,57\% & 58,35\% \\ \hline
+\textbf{3 Klassen} & 83,08\% & 42,65\% \\ \hline
+\end{tabular} \vspace{0.2cm}
+\caption{ F1-Score der DNNs für Erregung. } \end{table}
 
+
+
+\begin{table}[H] \centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Wertigkeit F1-Score (\%)} & \textbf{Probanden-abhängig} & \textbf{Probanden-unabhängig} \\ \hline
+\textbf{2 Klassen} & 88,21\% & 44,07\% \\ \hline
+\textbf{3 Klassen} & 84,72\% & 21,86\% \\ \hline
+\end{tabular} \vspace{0.2cm}
+\caption{ F1-Score der DNNs für Wertigkeit. } \end{table}
+
+
+Es ist klar zu erkennen, dass die Probanden-anhängige Ergebnisse relativ gut sind und die Probanden-unanhängige immer sanken, d.h. relativ schlecht sind. 
+Wie bei dem ersten Datensatz, findet hier wahrscheinlich auch Overfitting bei den Probanden-anhängigen Datensatz statt.
+Auch hier wurden ähnliche t-SNE Plots wie in Kapitel \ref{analyse-subsec} erstellt, die diese Vermutung bestätigen. 
+Bei dem Probanden-unanhängigen Datensatz liefern DNNs keine gute Ergebnisse, wobei die Performance für Erregung klar besser ist als für Wertigkeit. 

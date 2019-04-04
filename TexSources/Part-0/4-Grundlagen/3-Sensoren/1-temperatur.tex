@@ -1,3 +1,11 @@
 \subsubsection{K{\"o}rpertemperatur-Sensor} \label{grund-temp-subsubsec}
 
+\todo[inline,color=green!40]{RfP}
 
+Für das Projekt wurde zu Beginn ein Infrarot-Temperatursensor des Typs MLX90614 von der Firma ``Melexis-Microelectronic Integrated Systems'' verwendet. 
+Der MLX90614 ist ein sensibler digitaler  16-Bit Sensor, dessen Genauigkeit bei +-0,5$\circ$C liegt. 
+Der Arbeitsbereich ist für Temperaturen des Sensors liegt zwischen -40$\circ$C und +125$\circ$C, und für die Kontaktlose Messung an Objekten, also der mögliche Temperatur Messbereich, zwischen -40$\circ$C und +380$\circ$C. 
+Die Datenübertragung vom Sensor auf das Messboard erfolgt mittels eines I2C-Busses (siehe Abschnitt x.x zu I2C). 
+Die Übertragungsrate wurde hierbei mit 100.000 kbit/s gewählt. 
+Die Verwendung von I2C hat den Vorteil, dass auch andere digitale Sensoren ohne größeren zusätzlichen Verkabelungsaufwand an den Bus angeschlossen werden können. 
+In der Abbildung X ist der Anschluss des Sensor exemplarisch aufgezeigt.

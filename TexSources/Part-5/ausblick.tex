@@ -1,7 +1,21 @@
 \subsection{Ausblick} \label{ausblick-subsec}
 
 
-\todo[inline]{Verantwortlich: Minas}
+\todo[inline]{Verantwortlich: Minas / Boris??}
 
 
-
+Insgesamt wird diese Arbeit  im Rahmen von ELISE ``umgesetzt''.
+Im Rahmen der Hardware sollte erst mal weitere Minimierung von der Leiterplatte gemacht werden, was dazu beitragen würde, das Rauschen der analogen Sensoren (EEG/EOG/GSR) zu minimieren. 
+Da dieser Punkt wahrscheinlich auch die Verwendung kleinerer Komponenten erfordern würde, wenn möglich (Widerstände etc.), was wiederum sehr schwierig von Hand zu sodern wäre, müsste also Komponenten vom Leiterplattenhersteller montieren werden. 
+Danach sollte das 6-Kanal-ADS1299-6 durch das 8-Kanal-ADS1299, wegen der Einbeziehung der GSR-Messungen in den TI-Chip die derzeit keine freien Kanäle mehr ermöglicht, ersetzt werden. 
+Dann sollte es der automatische Reset für den $\mu$C  (und das gesamte System) aktiviert werden und es sollte auch einen besseren Platz für den Reset-Knopf zu finden oder ihn durch einen abgewinkelten Schalter (wie den Programmierschalter) zu ersetzen, da die aktuelle Stelle diesen Knopf schlecht ist. 
+Zudem konnte  die Kommunikation zwischen PCB und Software überarbeitet werden. 
+Es könnte zum Beispiel anderes Protokoll, Blutooth etc verwendet werden. 
+Diese könnte zu eine Erhöhung der Sampling-Rate führen, die im Moment bei 250 Samples/Sekunde liegt. 
+Letzt endlich könnte auch eine gute Idee sein, die Gesamtgröße unserer Maske zu verkleinern, da sie für einige Probanden etwas zu groß war (z.B. um unter dem Auge manchmal die Nase zu berühren usw.), sowie  das Loch für den Temperatursensor, die vergrößert werden sollte, damit man sich dort nicht durchschmelzen muss.
+Als Erweiterung bei der Software, könnte die VR-Emotionsinduktionen verbessert werden. 
+Es könnte auch andere Arten von Induktionswerkzeugen wie zum Beispiel ein Gerät die mehr Mobilität erlaubt verwendet werden, damit man bessere Ergebnis bei der Messungen bekommt. 
+Die allgemeine Gestaltung von dem ganzen Prozess sollte auch noch mal bearbeitet werden.
+Bei der Mustererkennung sollte andere Modelle getestet werden. 
+Diese konnte das Endergebnis verstärken. Auch andere Klassifikatoren oder Lernansätze (halbüberwachte und verstärkte Lernsätze) konnte auch für die nächste Arbeiten verwendet werden.
+Bei Plan B konnte es versuch werden, die Top-Methode zu implementieren und zu testen, um mehr Gewicht an diese Alternativelösung zu geben.
