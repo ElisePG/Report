@@ -228,8 +228,8 @@ In dem ELISE Projekt verwenden wir den sp{\"a}ten Fusionsansatz, weil er rechner
 
 
 % Unterkapitel 
-\subsubsection{Deep Neutral Networks (DNN)} \label{dnn-1}
-Im Rahmen des ELISE Projektes, wurden verschiedene Deep Neutral Networks (DNN) getestet\cite{bscschnieber18}.
+\subsubsection{Deep Neural Networks (DNN)} \label{dnn-1}
+Im Rahmen des ELISE Projektes, wurden verschiedene Deep Neural Networks (DNN) getestet\cite{bscschnieber18}.
 Die Standardarchitektur Multilayer Preceptron (MLP), Long Short-Term Memory Network (LSTM), ein CNN/LSTM Hybrid, eigene MLP-Architekturen sowie multimodale MLP (vgl. Abbildung \ref{fig:multimodal_dnn} und multimodale CNN wurden bewertet.
 Alle Ansätze erhalten Datenfenster der Größe $T \times S$ als Input, mit $T = 420$ aufgenommene Datenpunkte pro Sekunde jedes Sensors und $S = 9$ Sensorkanäle. 
 Jedes Modell hat einen Softmax-Output-Layer mit vier Neuronen, jeweils einen pro Klasse.
@@ -262,7 +262,7 @@ Alle faltungsbedingten Layer werden gefolgt von einem Maxpooling-Layer der Grö�
 
 
 Für MLP und CNN wurde zusätzlich ein Multimodal-Network getestet, welche auch bekannt als mMLP bzw. mCNN sind.
-Anstatt das ganze Zeitfenster als Input zu benutzen, wird hier jeweils ein Neutral-Network mit drei versteckten Layern für jeden Sensorkanal verwendet (siehe Abbildung \cite{fig:multimodal_dnn}).
+Anstatt das ganze Zeitfenster als Input zu benutzen, wird hier jeweils ein Neural-Network mit drei versteckten Layern für jeden Sensorkanal verwendet (siehe Abbildung \cite{fig:multimodal_dnn}).
 Die Ergebnisse wurden zusammengeknüpft und als Input für ein zusätzlichen verbindeten Layer genutzt. \\
 
 
@@ -272,9 +272,9 @@ Die Ergebnisse wurden zusammengeknüpft und als Input für ein zusätzlichen ver
 \label{fig:multimodal_dnn} \end{figure} \vspace{0.5cm}
 
 
-LSTMs\cite{hochreiter97} sind eine spezielle Form von wiederkehrenden Neutral-Networks.
+LSTMs\cite{hochreiter97} sind eine spezielle Form von wiederkehrenden Neural-Networks.
 Sie sind in der Lage, Informationen zu speichern, um Muster über die Zeit zu erkennen. 
-Nicht wiederkehrende Neutral-Networks lernen im Gegensatz dazu nur von den aktuellen Input-Daten.
+Nicht wiederkehrende Neural-Networks lernen im Gegensatz dazu nur von den aktuellen Input-Daten.
 Das Verhalten über die Zeit gesehen wird von den sogenannten ``Gates'' kontrolliert, welche den Informationsfluß innerhalb eines Networks beeinflußen können.
 Das ``Input-Gate'' sakralisiert den Einfluss des neuen Daten-Inputs, während das ``Forget Date'' den Einfluss der gespeicherten Informationen über den vorherigen Zustand des Neurons steuert.
 Am Ende wird der neue Output von dem ``Output-Gate'' modifiziert. \\
