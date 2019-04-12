@@ -1,4 +1,48 @@
 \subsection{Anforderungen} \label{anfoderungen-1}
 
+Auf Grundlage der Ziele des Forschungsprojektes ELISE und dem Sichten und Vergleichen von mehr als 30 wissenschaftlichen Veröffentlichungen der letzten 15 Jahre, ergeben sich bestimmte
+Anforderungen für den Entwurf eines eigenen Emotionserkennungssystems. Einige wissenschaftliche Veröffentlichungen sind dabei nicht außer Acht zu lassen. Die Foscher von T.
+Sharma, S. Bhardwaj und H. B. Maringanti haben in ihrer Veröffentlichung Emotion Estimation
+using Physiological Signals versucht, mit Hilfe von GSR, Herzschlagrate,
+BVP und der Temperatur Aufschluss über die Emotionen Zorn, Angst, Freude und Traurigkeit
+durch Stimulation verschiedener Songs und Videos zu erhalten. Sie erforschten, in
+welchen Fällen sich die Körperleitfähigkeit je nach emotionalem Ausdruck unterschiedlich
+verhält. H. F. Garcia, A. A. Orozco und M. A. Alvarez versuchten in ihrer Arbeit Dynamic
+physiological signal analysis based on Fisher kernels for emotion recognition durch unterschiedliche Klassifizierungsmodelle, die Signale von EEG, EOG, EMG (Elektromyografie),
+GSR, Atmung und Temperatur zu analysieren. Dafür wurden 32 Probanden,
+die ein 40-minütiges Video mit Musikausschnitten ansahen, aufgezeichnet und ausgewertet.
+Durch ein automatisches Regressionsprozess-Modell verbesserten sie dynamische Merkmale
+und weitere aufgezeichnete Signale für eine weiterführende Auswertung.
+Die Emotionserkennung erfolgte bis vor einigen Jahren in Verbindung mit zusätzlichen Kameras
+und Software zur Gesichtsmimik-Erkennung oder Stimmerkennung, nicht jedoch mit
+einer reinen Aufnahme von Körpermesswerten. In ELISE sollen insbesondere die lernrelevanten Emotionen Langweile, Frustration, Verwirrung sowie Engagement und Freude erkannt
+werden. Die Hardware-Architektur muss auch in diesem Fall wieder das Ziel erfüllen, dass
+das Gefühl der Immersion nicht gestört wird. Das heißt, dass das System zur Erkennung von
+lernrelevanten Emotionen an möglichst wenigen Stellen am Körper mit zusätzlicher Sensorik
+angebracht wird.
+Auf Basis der Literaturrecherche, wie in der Bibliographie ausgewiesen, sind folgende Sensoren
+zur Aufnahme der lernrelevanten Emotionen ausgewählt worden:
 
+• Gehirnaktivität (EEG)
+• Augenbewegung (EOG)
+• Blutvolumenpuls (BVP)
+• Sauerstoffsättigung im Blut (PPG)
+• Hautleitfähigkeit (GSR)
+• Körpertemperatur
+
+Da die Sensorwerte zum Mikrocontroller aufgrund ihres räumlichen Abstandes über den
+Bus übertragen werden, unterliegen diese Werte den Zeitanforderungen des Datenbusses.
+Hier ist zu überprüfen, welches Buskonzept den Zeitanforderungen gewachsen ist.
+Um den Aufwand für den Benutzer gering zu halten und die Immersion nicht zu stören,
+wird versucht, die Sensorik direkt an der VR-Brille anzubringen. Für die EEG- und
+EOG-Sensoren ist dies sowieso notwendig, da diese Messungen lediglich am Kopf stattfinden
+können. Zudem soll das Endsystem echtzeitfähig sein, um in der späteren Anwendung
+Änderungen und Fluktuationen der Emotionen erkennen zu können und die Schulungen auf
+den Lernenden anzupassen. Das Emotionserkennungssystem soll mobil anwendbar sein, da
+neuere Versionen der HTC Vive VR-Brille in Zukunft den kabellosen Betrieb unterstützen.
+Auch aus diesem Grund ist die Kompaktheit, Energieeffizienz und die Datenübertragung der
+einzelnen Sensoren und die Datenübertragung des späteren Gesamtsystems, die ebenfalls
+kabellos stattfinden soll, von großem Interesse. Eine mögliche Stelle zur Unterbringung des
+Gesamtsystems wäre am Hinterkopf des Probanden, da dort der nötige Platz vorhanden ist
+und erforderliche Befestigungsstellen am Kopfband der HTC Vive von Vorteil sind.
 
