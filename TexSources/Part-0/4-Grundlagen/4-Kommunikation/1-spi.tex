@@ -15,12 +15,12 @@ High-Pegels auf der SS/CS-Leitung nach Low. Zusätzlich kann der Master dem Slav
 Benachrichtigung durch verändern des Pegels anzeigen, die diesem mitteilt, dass eine neue
 Nachricht übertragen wird. Nachrichten haben hier eine Größe von mindestens einem Byte.
 
-%\begin{figure}[H] \centering
-%\includegraphics[width=12cm]{Images/elise_projektbeschreibung.png} 
-%\vspace{-0.3cm} 
-%\caption{Grobe {\"U}bersicht des Gesamtprojekts\cite{msckroenert}.}
-%\label{fig-elise} 
-%\end{figure}
+\begin{figure}[H] \centering
+\includegraphics[width=\textwidth]{Images/SPI_single_slave.png} 
+\vspace{-0.3cm} 
+\caption{ SPI-Kommunikation zwischen einem einzelnen Master und Slave.}
+\label{fig-elise} 
+\end{figure}
 
 Der SPI-Bus wird ohne ein festgelegtes Protokoll betrieben. Jedoch müssen für einen reibungslosen
 Betrieb die Einstellungen des Schiebetaktes vom Master auf der SCK-Leitung an
@@ -29,9 +29,9 @@ die Spezifikationen und Anforderungen des Slaves angepasst werden, da sowohl die
 Pegel an der Datenleitung vom Slave zum Master (MISO) überwachen. Der Zustand dieser
 Datenleitung wird als nächstes einzulesendes Bit aufgefasst. Um den Grundzustand der SCK-Leitung zu konfigurieren, also die Flanke des Taktes zur Datenübernahme einzustellen, muss die Taktpolarität (CPOL) und Phase (CPHA) an den Slave angepasst werden. In manchen Fällen kann diese Konfiguration auch auf vereinzelten Slaves vorgenommen werden.
 
-%\begin{figure}[H] \centering
-%\includegraphics[width=12cm]{Images/elise_projektbeschreibung.png} 
-%\vspace{-0.3cm} 
-%\caption{Grobe {\"U}bersicht des Gesamtprojekts\cite{msckroenert}.}
-%\label{fig-elise} 
-%\end{figure}
+\begin{figure}[H] \centering
+\includegraphics[width=\textwidth]{Images/SPI_timing_diagram2.png} 
+\vspace{-0.3cm} 
+\caption{Datenübertragung für verschieden CPOL und CPHA.}
+\label{fig-elise} 
+\end{figure}
