@@ -1,7 +1,16 @@
 \subsubsection{Daten{\"u}bertragung} \label{datenuebertragung-subsubsec}
 
+Beim dritten Prototypen wurde auf eine Kabelgenbunde Datenübertragung verzichtet. Hier wird der verwendete micro-USB Stecker nur noch einmalig zur Programmierung des Mikrocontrollers verwendet, und dient danach nur der Spannungsversorgung des Systems mit 5 Volt. Die Datenübertragung erfolgt stattdessen drahtlos durch das im ESP32 integrierte WLAN-Modul. Die Form und Reihenfolge der übertragenen Daten hat sich im Vergleich zum zweiten Prototypen nicht geändert. Diese werden immer noch in der Reihenfolge Temperatur, GSR,EEG,EOG, IRRAW,REDRAW mit einer Länge von 32-Bit übertragen (int32). Die Daten wurden nach dem in 3.6.4 beschriebenen UDP-Protokoll übertragen. Allerdings ergab sich bei der Übertragung der Daten in Echtzeit ein Problem, so wurde die Übertragung nach 2,5 Minuten aus unbekannten Gründen unterbrochen, was einen erneuten Verbindungsaufbau von ca. 30 Sekunden zur Folge hatte. Dadurch ging etwa ein sechstel der Daten verloren, was für unsere Zwecke natürlich inakzeptabel war. Durch mehrere Tests hatte sich schlussendlich ergeben, dass dieses Problem mit der Übertragungsgeschwindigkeit zusammenhängt. Werden also weniger Pakete pro Sekunde verschickt, lässt sich der Verbindungsverlust verzögern. Dieser Verbindungsverlust trat immer konstant auf, konnte also unter Berücksichtigung der Übertragungsgeschwindigkeit verlässlich vorhergesagt werden. Durch Reduktion der pro Sekunden geschickten Pakte, unabhängig von deren Größe,  konnte das auftreten dieses Fehler zuverlässig verzögert werden. Als Lösung dieser Probleme wurden die gemessenen Datenwerte in Pakten von 75 Werten gebündelt und dann verschickt. Lediglich für die Temperatur wurde in dieser zeit nur ein einziger wert gemessen und übertragen. Dies war durch den limitierten Speicherplatz auf dem Mikrocontroller bedingt. Dadurch ergab sich noch ein weiteres Problem, die maximal zulässige Größe eine UDP-Paketes wurde hierbei überschritten, wodurch eine automatische Aufteilung auf mehrere Packte stattfand, dadurch  
+wurden einzelne Werte zum Teil auf zwei UDP-Pakete verteilt, was eine späteres zusammensetzen natürlich erschwert. Also wurden als Kompromiss zur Lösung der zuvor genannten Probleme vier UDP-Pakete definiert, die immer einheitlich die Sensordaten enthalten. Diese waren wie folgt definiert:
 
+%ELISE_OFFER;SENSOR-ID; Temp;[1]GSR[75];EEG1[75]
 
+%ELISE_OFFER;SENSOR-ID;EEG2[75];EOG1[75]
+
+%ELISE_OFFER;SENSOR-ID; EOG2[75];IR-RAW[75]
+
+%ELISE_OFFER;SENSOR-ID; RED-RAW[75]
+%Überprüfen
 
 
 

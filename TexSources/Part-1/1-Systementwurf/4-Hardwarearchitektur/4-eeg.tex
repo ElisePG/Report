@@ -1,7 +1,28 @@
 \subsubsection{EEG} \label{eeg-1}
 
+Die EEG Messung wurde im ersten Prototypen durch eine spezielle Messschaltung verwirklicht, deren Aufgabe es war, die eingehenden analogen Signale der Messelektroden zu Filtern, und anschließend zu verstärken, und dann an einen AD-Wandler zur Bestimmung eines digitalen Signals zu übertragen. Die dafür benötigte Schaltung wurde im Rahmen einer Bachelorarbeit entwickelt, und ist in Abb. 3.2.4 zu sehen. 
 
+%BILD
 
+Wie die Schaltplan zu entnehmen ist, wird zunächst das von den Elektroden  eingehende Signal  gefiltert. Dabei kommen drei verschiedene Filterschaltungen zum Einsatz. 
 
+Notch-Filter:
+Der Notch-Filter (auch Kerbe-filter genannt) dient in unserem Fall der Filterung eines sehr engen Frequenzbereiches um 50 Hertz. Hierbei handelt es sich um von anderen Geräten eingespeiste Netzspannung, die zuerst wieder ausgefiltert werden muss. Die beiden Grenzfrequenzen des Notch-Filters sind individuell einstellbar. Die Mittelfrequenz ergibt sich durch die Wurzel der Multiplikation beider Frequenzen.  
+
+Hochpassfilter:
+Beim Hochpassfilter werden alle Frequenzen, die oberhalb einer gewissen Grenzfrequenz liegen (nahezu) ungeschwächt durchgelassen, und alle darunterliegenden Frequenzen werden fast vollständig blockiert (bzw. ausgefiltert). In unserem Fall wird lediglich ein RC-Hochpassfilter verwendet. Dies ist die einfachste Ausführung eines solchen Filters. Die Grenzfrequenz berechnet sich hier durch :
+
+%F_g= ½ * pi * R * C %Formatieren
+
+Tiefpassfilter:
+Ein Tiefpassfilter funktioniert prinzipiell wie ein Hochpassfilter, nur dass hier unterhalb einer Grenzfrequenz liegende Frequenzen ungehindert durchgelassen werden, und die oberhalb der Grenzfrequenz liegenden Frequenzen stark abgeschwächt werden. Durch die Kombination eines Tiefpassfilters mit einem Operationsverstärker ergibt sich in unserem Fall ein Tiefpassfilter erster Ordnung.
+
+Bei unserer verwendeten Schaltung ist auch noch zu beachten, dass Operationsverstärker aktive Bauteile sind, welche noch eine zusätzliche Spannungsversorgung benötigen. Die Schaltung ist auf eine Spannungsversorgung durch eine 9 Volt Blockbatterie ausgelegt. Hierbei kommt ein einfacher Spannungsteiler zum Einsatz, mit dem der positive und  negative Eingang des Spannungswandlers mit +4,5 Volt bzw. -4,5 Volt versorgt wird. 
+
+Zusätzlich zu regulären Operationsverstärkern kamen auch noch sogenannte Instrumentationsverstärker zum Einsatz. Hierbei handelt es sich um besonders präzise Operationsverstärker, welche einen sehr hohen Eingangswiderstand im Bereich 10 hoch 9 bis 10 hoch 12 Ohm aufweisen. Der Verstärkungsfaktor dieser Instrumentationsverstärker ist durch getrimmte Vorwiderstände bereits in gewissen Bereichen vordefiniert, und kann durch die Verwendung von zusätzlichen externen Vorwiderständen noch in gewissen Bereichen variiert werden.
+
+Zuletzt kamen bei dieser Schaltung noch Pegelwandler zum Einsatz, welche das gefilterte Signal noch einmal um einen Faktor von 1000 verstärken bevor diese vom AD-Wandler des Mikrocontrollers umgewandelt werden. Der Mikrocontroller arbeitet in einem Bereich von 0- 3,6 Volt. Der Pegelwandler besteht aus einer Zenerdiode mit einem Widerstand.
+
+Beim zweiten und dritten Prototyp kommt diese Schaltung nicht mehr zum Einsatz. Hier wird natürlich immer noch ein analoges Signal über Elektroden gemessen, welches anschließend gefiltert, verstärkt und als digitales Signal ausgegeben wird. Zu diesem Zweck wurde ein Speziell für EEG Messungen entworfener Chip von Texas Instrument verwendet. Und zwar handelt es sich hier um den ADS1299. Mit diesem ist eine Messung der EEG-Signale relativ einfach möglich.
 
 

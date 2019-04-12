@@ -1,5 +1,12 @@
 \subsubsection{GSR-Sensor} \label{gsr-1}
 
+GSR ist eine Abkürzung für das englische Galvanic Skin Response und ist synonym mit der Abkürzung EDA (engl. Elektrodermal activity dt. Elektrodermale Aktivität). Es wird also mit dem GSR-Sensor die Hautleitfähigkeit zwischen zwei leitenden Elektroden gemessen. Für unsere Zwecke, also der Emotionserkennung, ist dies insofern relevant, da einige Emotionen durchaus Einfluss auf die Hautleitfähigkeit eines Probanden nehmen können, so wie zum Beispiel negative Emotionen wie Angst oder Stress die Schweißproduktion des Körpers beeinträchtigen können. Dadurch ändert sich dann natürlich auch die Leitfähigkeit der Haut.
 
+Im wesentlichen wurde die Hautleitfähigkeit mittels zweier verschiedener Messeinrichtungen bestimmt. Bei den ersten beiden Prototypen war der GSR-Sensor im wesentlichen ein Spannungsteiler. Der genaue Aufbau kann der Abbildung X entnommen werden. 
 
+%BILD
+
+Um ein direktes einspeisen der Versorgungsspannung VCC auf den Probanden zu vermeiden wurde der Widerstand R6 (68kOhm) als Strombegrenzung eingeführt. 1 und 2 an JP4 sind die am Probanden befindlichen Elektroden, zwischen denen der Widerstand der Haut (R2) gemessen werden soll, P02 ist die zugehörige Spannung, und wird an den Analog-Digital-Wandler der Mikrocontrollers weitergegeben. C3 ist zum Abfangen von Spannungsspitzen da. Daraus ergibt sich folgende Gleichung für P02:
+
+P02 = Vcc + R1/(R1 + R2)  %Formatieren
 

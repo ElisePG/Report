@@ -1,7 +1,12 @@
 \subsubsection{Daten{\"u}bertragung} \label{datenuebertragung-1}
 
-
-
-
-
+Da durch externe Rechner leistungsfähigere Möglichkeiten für die Auswertung und Analyse der Daten zur Verfügung stehen sollen diese, ohne größere Bearbeitung im Mikrocontroller selbst, übertragen werden.
+Die geschieht insbesondere unter der Betrachtung, dass das entwickelte System später auch zur Echtzeiterkennung von Emotionen verwendet werden soll. 
+Da hier im Endeffekt recht anspruchsvolle Algorithmen der Mustererkennung zum Einsatz kommen sollen, macht es Sinn hier schon eine Kommunikation mit einem Leistungsfähigeren System vorzusehen.
+Die gemessenen Werte werden in 8-Bit-Datenpaketen Übertragen. Die Übertragung erfolgt vom Mikrocontroller nrf52832 über dessen UART-Schnittstelle an ein externes Bluetooth-Modul vom Typ RN42XVP. 
+Für die Übertragung per UART werden lediglich 2 Datenschnittstellen verwendet, die RXD- und TXD-Leitungen.
+Zudem benötigt das Bluetooth-Modul nur noch einen Anschluss für die Masseleitung, sowie eine 3,3 Volt Spannungsversorgung. 
+Zunächst werden die Daten für die Temperatur und dann alle ADC-Werte für GSR,EEG und EOG (1. Kanal rechts/links, 2, Kanal: oben/unten) übertragen.  
+Die nächsten beiden Datenwerte sind die Rohdaten der roten und infraroten LED, welche vom Photosensor des Pulsoximeters gemessen werden. 
+Die letzten beiden Daten wurden im Mikrocontroller aus den Rohdaten des Pulsoximeters berechnet. Es handelt sich hierbei um den Puls, sowie die Sauerstoffsättigung des Probanden.
 

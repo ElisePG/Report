@@ -1,0 +1,37 @@
+\subsection{Serial-Peripheral Interface(SPI)} \label{grund-spi-subsubsec}
+
+\todo[inline]{Verantwortlich: Kevin, Jonas}
+
+Das Serial Peripheral Interface (kurz: SPI) ist ein, in 1987 entwickeltes Bussystem, das aus drei Leitungen für eine serielle und synchrone Datenübertragung zwischen verschiedenen ICs besteht. Dieses Bussystem stellt einen Verbindungsstandard für einen synchronen seriellen Datenbus dar. Mit diesem Standard können unterschiedliche digitale Schaltungen nach einem Master-Slave Prinzip miteinander verbunden werden.
+
+ MOSI (Master Out  Slave In) auch SDO (Serial Data Out)
+ MISO (Master In   Slave Out) auch SDI (Serial Data In)
+ SCK (Serial Clock) – Schiebetakt
+
+Außerdem wird noch eine weitere Leitung benötigt, welche Slave Select (SS) oder auch
+Chip Select (CS) genannt wird, durch die der Master jeden verbundenen Slave zur aktuellen
+Kommunikation selektiert. Die Auswahl erfolgt hierbei vom Master durch den Wechsel des
+High-Pegels auf der SS/CS-Leitung nach Low. Zusätzlich kann der Master dem Slave eine
+Benachrichtigung durch verändern des Pegels anzeigen, die diesem mitteilt, dass eine neue
+Nachricht übertragen wird. Nachrichten haben hier eine Größe von mindestens einem Byte.
+
+%\begin{figure}[H] \centering
+%\includegraphics[width=12cm]{Images/elise_projektbeschreibung.png} 
+%\vspace{-0.3cm} 
+%\caption{Grobe {\"U}bersicht des Gesamtprojekts\cite{msckroenert}.}
+%\label{fig-elise} 
+%\end{figure}
+
+Der SPI-Bus wird ohne ein festgelegtes Protokoll betrieben. Jedoch müssen für einen reibungslosen
+Betrieb die Einstellungen des Schiebetaktes vom Master auf der SCK-Leitung an
+die Spezifikationen und Anforderungen des Slaves angepasst werden, da sowohl die Taktpolarität
+(CPOL) und Phase (CPHA) von Slave zu Slave unterschiedlich sein können. Die Übertragung erfolgt dabei in verschiedenen Zyklen. Der Master bringt seine Datenleitung zum Senden (MOSI) auf den Pegel des nächsten Bits, das übertragen werden soll. Da der Master den Kommunikationszyklus initialisiert, gibt er auf der SCK-Leitung einen Puls aus. Um Daten des Slaves als Antwort zu erhalten, muss der Master während seines Sendevorgangs den
+Pegel an der Datenleitung vom Slave zum Master (MISO) überwachen. Der Zustand dieser
+Datenleitung wird als nächstes einzulesendes Bit aufgefasst. Um den Grundzustand der SCK-Leitung zu konfigurieren, also die Flanke des Taktes zur Datenübernahme einzustellen, muss die Taktpolarität (CPOL) und Phase (CPHA) an den Slave angepasst werden. In manchen Fällen kann diese Konfiguration auch auf vereinzelten Slaves vorgenommen werden.
+
+%\begin{figure}[H] \centering
+%\includegraphics[width=12cm]{Images/elise_projektbeschreibung.png} 
+%\vspace{-0.3cm} 
+%\caption{Grobe {\"U}bersicht des Gesamtprojekts\cite{msckroenert}.}
+%\label{fig-elise} 
+%\end{figure}

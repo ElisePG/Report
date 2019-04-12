@@ -1,6 +1,7 @@
 \subsubsection{Daten{\"u}bertragung} \label{datenuebertragung-subsubsec}
 
-
+Im Gegensatz zum ersten Prototypen wurde hier eine USB-Schnittstelle zur Kommunikation benutzt. Verwendet wurde hier ein micro-USB Stecker, welcher mit einen FTDI-Chip vom Typ FT232RL mit der UART-Schnittstelle des ESP32 kommuniziert. Die USB-Schnittstelle dient hier zum einen der Programmierung des Mikrocontrollers, als auch der Ausgabe der Daten an einen externen Rechner. Die UART-Schnittstelle besteht lediglich aus zwei Datenleitungen (TXD und RXD). Dabei ist darauf zu achten, dass der in Datenblättern als RXD bezeichnete Pin an den TXD-Pin des jeweil anderen Chips angeschlossen wird. Der RXD-Pin des Mikrocontroller wird also an den TXD-Pin des FTDI-Chips angeschlossen, und der TXD-Pin des Mikrocontrollers an den RXD-Pin des FTDI-Chips. Zusätzlich muss noch eine 5 Volt Spannungsversorgung angeschlossen werden. Außerdem verfügt der FTDI-Chip noch über einen VCCIO-Pin, über den das Spannungsniveau der gesendeten UART-Pakete bestimmt wird. In unserem Fall findet die Übertragung mit 3,3 Volt statt. Dieser Spannungspegel kann direkt dem FT232RL entnommen werden, es muss nur noch ein Kondensator zur Stabilisastion zwischen dem Spannungspin und Masse mit dem Niveua-Pin Parallel geschaltet werden. 
+Die Daten haben zu Beginn unterschiedliche Längen, so werden Temperatur, GSR und die Rohdaten des Pulsoximeters noch in 8-bit Datenpaketen an den Mikrocontroller übertragen. Die Daten für EEG und EOG werden jetzt aber durch den ADS1299 berechnet. Dieser gibt die Daten in mit einer Länge von jeweils 24-bit im 2er Komplement aus. Um einen Problemlosen Empfang mit SerialPlot zu gewährleisten wurden  die Daten in ein int32-Format umgewandelt. 
 
 
 
