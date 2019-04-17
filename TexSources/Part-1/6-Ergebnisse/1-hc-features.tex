@@ -1,7 +1,9 @@
 \subsection{Ergebnisse der hand-gefertigten Merkmale} \label{ergebnisse-hc-features-subsec}
 
-Zun{\"a}chst haben wir die Daten mit einer Normalisierungstechnik vorverarbeitet, die bereits im Kapitel \ref{datenerfassung-0} beschrieben wurde.
-Entsprechend der ERC haben wir dann den gleitenden Zeitfenster-Segmentierungsansatz (vgl. Kapitel \ref{segmenation-1}) mit den Parametern $T=120$ und $\sigma=30$ verwendet.
+Von den insgesamt 22 Probenden wurden bei 7 Elektrodenproblemen festgestellt, weshalb die Qualität der Sensordaten bei diesen 7 Testpersonen angezweifelt wird.
+Aus diesem Grund, wurden diese Daten für die Mustererkennung nicht berücksichtigt und der tatsächlich analysierte Datensatz besteht aus insgesamt 15 Probanden.
+Zun{\"a}chst wurden die Daten mit einer Normalisierungstechnik vorverarbeitet, die bereits im Kapitel \ref{datenerfassung-0} beschrieben wurde.
+Entsprechend der ERC wurde dann den gleitenden Zeitfenster-Segmentierungsansatz (vgl. Kapitel \ref{segmenation-1}) mit den Parametern $T=120$ und $\sigma=30$ verwendet.
 Um die optimalen Parameter des SVM-Klassifikators (d.h. Soft-Margin $C$ und Kernelparameter $\gamma$) zu bestimmen, wurde ein Gitter-Suchansatz verwendet.
 Es besteht darin, einen Satz m{\"o}glicher Werte f{\"u}r jeden Parameter zu definieren und die Leistungen des Klassifikators f{\"u}r jedes Paar m{\"o}glicher Werte zu testen (d.h. an jedem ``Knoten des Gitters''). \\
 

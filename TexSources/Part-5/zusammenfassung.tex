@@ -4,3 +4,52 @@
 \todo[inline]{Verantwortlich: Arnaud \\}
 
 
+Ziel dieses Projekts war es, ein kompaktes mikrocontroller gestütztes System zur Emotionserkennung in einer Virtual-Reality-Umgebung zu entwickeln. 
+Die Grundidee war, ein Modul zu entwerfen, das aus sensorischen Sensoren und Mikrocontrollern besteht, um physiologische Daten zu erfassen; dann Szenarien zu entwerfen, die auf Bildern, Videos und/oder Spielen basieren, um bestimmte Emotionen hervorzurufen; und schließlich diese Daten zu analysieren, um eine Korrelation zwischen physiologischen Daten und Emotionen herzustellen.
+Um dieses Ziel zu erreichen, wählten wir die physiologischen Signale, die wir messen wollten, genauso wie die Sensoren, die für die Erfassung dieser Daten geeignet wäre, nämlich: 
+\begin{itemize} \setlength\itemsep{-0.15cm}
+  \item Körpertemperatur (siehe Abschnitt 3.5.1) 
+  \item Blood Volume Pulse (siehe Abschnitt 3.5.2) 
+  \item Sauerstoffsättigung(siehe Abschnitt 3.5.3) 
+  \item Galvanic Skin Response (siehe Abschnitt 3.5.4) 
+  \item Elektroenzephalografie (siehe Abschnitt 3.5.5) 
+  \item Elektrookulografie (siehe Abschnitt 3.5.6) 
+\end{itemize}
+
+
+Dann wählten wir die Emotionen aus, die wir studieren wollten: Langeweile, Freude und Verwirrung.  
+Wir haben verschiedene Szenarien entworfen und entwickelt, um diese Emotionen zu induzieren(siehe Abschnitt 7 \& 15): Dann galt es, all diese Szenarien sowie Fragebögen zu diesen emotionalen Erfahrungen in eine virtuelle Umgebung zu integrieren. 
+Danach mussten die von den verschiedenen Sensoren gesammelten Daten digitalisiert werden um Ihre Speicherung und spätere Analysierung für eine Mustererkennung zu ermöglichen.
+Während des gesamten Projekts haben wir drei Prototypen nach dem gleichen Prinzip entwickelt, nämlich: 
+eine Hardware, die aus zwei Komponenten besteht: 
+zum einen der Messeinrichtung, mit den einzelnen Sensoren, welche am Kopf einer Probanden befestigt werden und zum anderen aus dem Messboard, auf dem die empfangenen Signale verarbeitet, und dann weiter gesendet werden. 
+Jeder neue Prototyp ist eine Verbesserung des vorherigen. \\
+
+Der erste Prototyp(siehe Abschnitt 5) bestand aus drei unterschiedlichen
+Teilsystemen:
+\begin{itemize} \setlength\itemsep{-0.15cm}
+\item Teilsystem 1: Mikrocontroller zur Aufnahme und Verarbeitung der Sensorik GSR, BVP und Körpertemperatur mit Anbindung an die anderen beiden Teilsysteme. 
+\item Teilsystem 2 : Aufnahme und Verarbeitung von Hirnströmen (EEG). Anbindung an das Teilsystem 1 zur Übermittlung der analogen Signale. 
+\item Teilsystem 3: Aufnahme und Verarbeitung von Strömen bei Augenbewegungen (EOG). Anbindung an das Teilsystem 1 zur Übermittlung der analogen Signale. 
+\end{itemize}
+
+Die Sensoren aus Teilsystem 1 und die Elektroden aus Teilsystem 2 werden mit ein einfaches Kopfband getragen, die Elektroden von Teilsystem 3 werden separat am Kopf gebunden und sind  Klebeelektrode(nur einmal verwendbar). 
+Die verschiedenen Szenarien zur Induktion von Emotionen, nämlich Spiele für Langeweile und Verwirrung sowie Bildfolge und Musik für Freude, werden über einen Computerbildschirm übertragen.Die Daten werden nach Wandlung per Bluetooth übertragen. 
+Die erste Messreihen(siehe Abschnitt 8) werden mit diesem Modul durchgeführt, und damit werden wir  Daten erfassen und bearbeiten (siehe Abschnitt 9 \& 10). \\
+
+Der zweite Prototyp(siehe Abschnitt 11) bietet schon einige Verbesserungen: 
+\begin{itemize} \setlength\itemsep{-0.15cm}
+\item Das Kopfband wird durch ein Mask ersetzt, wo alle Sensoren(und  elektroden) eingebaut werden sollte. 
+\item Die alte Elektroden(EEG und EOG) werden durch trockene(goldene) Elektroden ersetzt. 
+\item Beginn der Entwicklung der verschiedenen Szenarien zur Induktion von Emotionen in Virtual-Reality-Umgebung.  
+\item Die verschiedenen Teilsysteme des ersten Prototyps werden durch ein einziges System mit Hilfe dem FTDI-Chip (siehe Abschnitt 11.2.6) ersetzt und so Probleme im Zusammenhang mit dem Vorhandensein mehrerer Verstärker sowie Kalibrierung der Stromversorgung des Systems lösen. 
+\end{itemize}
+
+Leider würde da keine Messreihe durchgeführt, sonder weiter weitergearbeitet an das verbesserung des Prototyps. \\
+
+
+Der dritte Prototyp unterscheidet sich nicht wesentlich vom zweiten Prototyp. Wir haben weiter an der Optimierung der Position der verschiedenen Sensoren gearbeitet. Die Szenarien zur Emotionsinduktion und die Fragebogen werden mit Hilfe von Unreal Engine in ein VR-Umgebung entwickelt. Das Spielt ``Frustra Bit'' (siehe Abschnitt 7.3.3) wird durch das “heißer Draht”(siehe Abschnitt 15.3.3) ersetzt. und die Datenübertragung wird per Wlan stattfinden. \\
+
+Eine zweite Messreihe (siehe Abschnitt 16) wird nach Entwicklung diese dritte Prototyp stattfinden und die Daten werden erfasst und weiter gearbeitet(siehe abschnitt 17 \& 18). \\
+
+Schließlich haben wir andere Wege erforscht, um unsere Arbeit mit anderen zu vergleichen und dann eine Reihe einfacher Regeln festzulegen, die es ermöglichen könnten, eine Verbindung herzustellen zwischen z.B. der Variation biophysiologischer Signale und der Intensität der wahrgenommenen Emotionen. \\
