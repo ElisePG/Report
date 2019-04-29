@@ -22,8 +22,7 @@
 \usepackage{float}
 \usepackage{blindtext}
 %\usepackage{printlen}
-%\usepackage{multirow}
-%\usepackage{rotating}
+\usepackage{rotating}
 %\usepackage{math}
 \usepackage{titlesec}
 \usepackage{etoolbox}
@@ -35,7 +34,8 @@
 \usepackage{fancyhdr}
 \usepackage[ruled,vlined,linesnumbered,noresetcount]{algorithm2e}
 \usepackage{microtype}
-
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\definecolor{lightgreen}{rgb}{0.7,1,0.7}
 
 
 \geometry{left=2cm,top=2cm,right=2cm,bottom=2cm}
