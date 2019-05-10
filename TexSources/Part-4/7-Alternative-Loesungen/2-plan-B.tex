@@ -1,6 +1,40 @@
 \subsection{Plan B} \label{plan-b-4}
 
-\todo[inline]{Verantwortlich: Meryem}
+\todo[inline]{Verantwortlich: Arnaud}
+
+
+\subsubsection{Lösungsbeschreibung}
+
+Die Analyse der gesammelten Daten ist eine ziemlich mühsame Aufgabe, die nicht nur spezifische Fähigkeiten erfordert, sondern vor allem viel Zeit in Anspruch nimmt. 
+Aufgrund der hohen Teilnehmerzahl an unserer Studie haben wir eine ebenso hohe Datenmenge erhoben. 
+Wir haben uns daher entschlossen, einen anderen Ansatz zu entwickeln, so dass auch eine zusammenfassende Verwendung der erhobenen Daten möglich ist. 
+Die Idee war, nach anderen Arbeiten über die Erkennung von Emotionen zu suchen(und finden); 
+zuerst diese Arbeiten mit unseren zu vergleichen, um unsere ersten Beobachtungen zu bestätigen oder zu annullieren, dann einfache Regeln festzulegen, die eine schnelle Verwendung der Daten ermöglichen könnten;
+zum Beispiel, um eine klare Beziehung zwischen der Veränderung der Werte eines biophysiologischen Signals und der Veränderung der Intensität einer Emotion herzustellen. Ziel dieser ``Plan B'' ist uns zu ermöglichen eine abgeschwächte Emotionserkennung ohne Mustererkennung vor, die alleine auf den Rohdaten unser Sensoren arbeitet. 
+Die Aufgabe besteht nun darin, für alle Sensorwerte die wir haben (Puls, Hautleitfähigkeit (GSR), EOG, EEG, Temperatur), solche verleichsweise einfachen Beziehungen (also KEIN Deep-learning etc.) in der Literatur oder Forschungsarbeiten zu finden, damit wir uns auf diese berufen können.
+Dieser Ansatz wird sich jedoch nicht so einfach wie erwartet gestalten und auch seinen Teil der Schwierigkeiten mit sich bringen. \\
+
+
+\subsubsection{Schwierigkeiten}
+
+Die erste Schwierigkeit war die hohe Anzahl von gefundenen Artikeln, die sich mit dem Thema beschäftigten. 
+Die Frage nach der Relevanz der gefundenen Artikel für unser Projekt stellte sich. 
+Es war interessant festzustellen, dass die Ansätze unterschiedlich waren (z. B. Anzahl der kombinierten Sensoren, Positionen der Sensoren am Körper, Auswahl und Anzahl der Emotionen...), obwohl dieser Unterschied in der Arbeitsmethodik eine zusätzliche Schwierigkeit war, war es auch ein Gewinn, da die Ziele die gleichen waren:
+biophysiologische Signale und Emotionen zu verbinden. \\
+
+
+\subsubsection{Lösungsvorschlag: Entscheidungsmatrix}
+
+Um aus den vorliegenden Artikeln den geeignetsten ermitteln zu können, wurde eine Entscheidungsmatrix verwendet. 
+Diese besondere Form der Matrix ist eine Methode, den Nutzwert eines Objekts, hier der Artikel hervorheben zu können.
+Für diese Matrix müssen zunächst Entscheidungskriterien gesammelt werden. 
+Diese werden ``rules'' genannt. 
+Diesen Kriterien werden Gewichtungen ``weights'' zugeordnet. 
+Gewichtungen liegen auf einer Skala von ``1 niedrige Wichtigkeit'' bis ``7 hohe Wichtigkeit''. 
+Alle zu vergleichenden Objekte bekommen pro Kriterium eine Bewertung von eins bis sieben. 
+Pro Kriterium werden alle zu bewertenden Objekte betrachtet und dann mit einer Zahl versehen, wobei das Objekt bei dem das Kriterium am zutreffendsten ist, die höchste Zahl bekommt und das Objekt mit der niedrigsten Übereinstimmung die niedrigste Zahl. 
+Die Summe dieser Bewertungen ergibt am Ende die Gewichtung des einzelnen Objekts, indem die zuvor vergebene Zahl mit der Gewichtung (weight) multipliziert und alle resultierenden Zahlen dann pro Spalte addiert werden. 
+
 
 
 \begin{sidewaystable}
@@ -89,3 +123,190 @@
     \caption[Bewertung der Decisionmatrix]{Bewertung der Decisionmatrix. Die zwei besten Lösungen sind grün hervorgehoben. } \label{tab:score_matrix}%
   \end{table}%
 
+
+\subsubsection{Auswahlkriterien für die Entwicklung der Entscheidungsmatrix}
+
+Für die Entwicklung unserer Entscheidungsmatrix haben wir sieben Auswahlkriterien (``Rule'') definiert, die wir Ihnen hier erläutern, indem wir deren Bedeutung(und Wichtigkeit) für die Auswahl der Artikel angeben. 
+Wir möchten darauf hinweisen, dass jedes Kriterium entsprechend seiner Bedeutung eine der folgenden Gewichte erhält: 
+1 für niedrigwichtig, 3 für mittelwichtig, 5 für wichtig und 7 für sehr wichtig. \\
+
+
+\textbf{Rule 1: The journal or conference in which the paper was published}
+
+Die Zeitschrift oder Konferenz, in der ein Artikel veröffentlicht wird, liefert wichtige Hinweise auf die Zuverlässigkeit des Inhalts eines Artikels, aber es ist oft der Fall, dass ein Artikel mit einem mehr oder weniger inkonsistenten Inhalt aufgenommen wird. 
+Und dass andererseits mehr als überzeugende Arbeit in einer hochrangigen Zeitschrift oder Konferenz nicht akzeptiert wird. 
+Deshalb ist dieses Kriterium, obwohl es ein so geringes Gewicht (Gewicht von 1) erhält, eines der grundlegenden Entscheidungskriterien. \\
+
+
+\textbf{Rule 2: The date of publication}
+
+In dem Wissen, dass wir uns in einer sich ständig verändernden Gesellschaft befinden, insbesondere im digitalen und technischen Bereich, ist die Idee, das Veröffentlichungsdatum als Kriterium zu wählen, durch die Zuverlässigkeit der verwendeten technologischen Werkzeuge gerechtfertigt. 
+Darüber hinaus geht man bei der Verwendung sehr alter Artikel das Risiko ein, dass seine Schlussfolgerungen durch andere Arbeiten widerlegt oder erweitert werden. 
+Allerdings bleiben mit einem korrekten wissenschaftlichen Ansatz und einem zuverlässigen Versuchsgerät die Analysen und Ergebnisse einer Arbeit, aber nach vielen Jahren, solange sie nicht widersprochen werden, zuverlässig. 
+Aus diesem Grund genießt dieses Kriterium zwar weiterhin Relevanz, aber eine geringe Bedeutung (Gewicht von 1). \\
+
+
+\textbf{Rule 3: The number of test subjects}
+
+Jeder theoretische Prozess kann nur in seiner praktischen (experimentellen) Anwendung validiert werden. 
+Was die Geräte zur Erkennung von Emotionen betrifft, so kann die Zuverlässigkeit des Systems erst nach abschließenden Tests an Probanden gewährleistet werden. 
+Je mehr Probanden ein Gerät erfolgreich eingesetzt haben, desto besser kann ihre Zuverlässigkeit abgeschätzt werden, und desto wahrscheinlicher ist es, dass sie Ergebnisse an anderen Probanden mit ähnlichen Eigenschaften liefern. 
+Allerdings ist es oft schwierig zu definieren, aus wie vielen Probanden ein Gerät als zuverlässig eingestuft werden kann. 
+Obwohl die Anzahl der Themen von Erfahrung zu Erfahrung variiert, ist es schwierig, ihren Grad zu definieren, es ist ein Element, das die Autoren aller Artikel zu Fragen berücksichtigen. 
+Es ist per Design kein Element, das es ermöglicht, einen Artikel voneinander zu unterscheiden, aber es bleibt wichtig, einen Artikel zu beurteilen: 
+Wir haben ihn als mäßig wichtig eingestuft, d.h. mit einem Gewicht von 3. \\
+
+
+\textbf{Rule 4: Sensor position}
+
+Die Position ist eines der am schwierigsten zu berücksichtigenden Kriterien. Zunächst einmal sind alle Studien, die unsere eigenen Theorien bestätigen, wie man Emotionen aus biophysiologischen Signalen bestimmen kann, willkommen. 
+Eine noch andere Positionierung als unsere würde es uns also ermöglichen, unsere Arbeit zu unterstützen. 
+Um unseren Ansatz besser zu validieren, bleibt die Ähnlichkeit der Positionen jedoch ein positiver Aspekt. 
+Hinzu kommt, dass unsere Forschungsentscheidungen auf Sensoren basierten, die mehr oder weniger identisch mit unseren waren, was bedeutet, dass wir als wichtiges Kriterium nicht wirklich in der Lage sein werden, die Artikel voneinander zu unterscheiden, daher ihre durchschnittliche Bedeutung und ein Gewicht von 3. \\
+
+
+\textbf{Rule 5: The findinds rule of the paper were clearly formulated}
+
+Wie wir schon erwähnt haben, Ziel dieser Ansatz  ``Plan B'' ist uns zu ermöglichen eine abgeschwächte Emotionserkennung ohne Mustererkennung vor, die alleine auf den Rohdaten unser Sensoren arbeitet. 
+Damit ist dieses Kriterium das grundlegendste. Auf der Grundlage der formulierten Regeln hätten wir nämlich festgestellt, dass wir die Schlussfolgerungen der vorläufigen Analysen(ohne Mustererkennung), die wir aus den Daten vornehmen werden, rechtfertigen könnten. Daher ist es wichtig, dass diese Regeln explizit und gut formuliert sind. 
+Diese Regel hat daher das Gewicht von 7. \\
+
+
+\textbf{Rule 6: Contradiction}
+
+Es ist wichtig, dass die vollständige Analyse des Artikels uns nicht in mehrdeutige oder gar widersprüchliche Situationen führt. 
+Analysen und Schlussfolgerungen müssen in Phase sein und der Prozess muss zuverlässig bleiben. 
+Dies würde die Qualität des Artikels und der Arbeit gefährden. 
+Darüber hinaus muss es auch mit anderen ähnlichen Studien übereinstimmen, die in dieser Hinsicht durchgeführt wurden. 
+Deshalb hat diese Regel ein Gewicht von 5, was diese Regel zu einer wichtigen Regel macht. \\
+
+
+\textbf{Rule 7: The paper was cited many times}
+  
+Dieses Kriterium sollte auch die Qualität und Relevanz des Artikels verdeutlichen. 
+In der Tat können wir denken, dass, je mehr ein Artikel in einem anderen zitiert wird, desto mehr können wir davon ausgehen, dass es sich um eine zuverlässige und qualitativ hochwertige Arbeit handelt. 
+Obwohl es interessant klingt, behält es dennoch einen eher subjektiven Aspekt, da ein Artikel möglicherweise nicht zitiert wird, nur weil er nicht gut genug bekannt ist oder weil er besser gefunden wurde. 
+Aus diesem Grund geben wir dieser Regel eine Gewichtung von 1. \\
+
+
+\subsubsection{Liste der Artikel}
+
+Aufgrund der großen Anzahl gefundener Artikel ist es nicht sehr interessant, hier alle betroffenen Artikel aufzulisten oder zu präsentieren. 
+Wir werden jedoch sehr kurz darauf hinweisen, wie die Suche durchgeführt wurde und auch die ausgewählten Artikel kurz vorstellen.
+Tatsächlich haben wir für die Suche in unseren Artikeln eine bestimmte Anzahl von Schlüsselwörtern identifiziert, versucht, mit ihnen Sätze zu bilden und haben deshalb die Suche über diese Sätze gestartet: im Wesentlichen: 
+``Erkennung von Emotionen'', ``Emotionen und biophysiologische Signale'', ``Sensorische Sensoren und Emotionen''...
+Wir können leicht erkennen, dass die Schlüsselwörter sind: 
+Emotionserkennung, sensorische Sensorik.
+Wir sind zu einer ersten Sortierung übergegangen, indem wir nach verschiedenen grundlegenden Kriterien wie zum beispiele dem Inhalt des Dokuments, der Relevanz der Publikationsstelle, unter anderem, eliminiert haben.
+Neun Artikel haben unsere Aufmerksamkeit erregt, da wir sie hier nicht vollständig und ausführlich präsentieren können, wir werden nur den Titel und das Thema, auf dem sich die Studie konzentriert hat, nämlich welche Emotionen und biophysiologischen Signale betroffen sind, angeben. \\
+
+
+\textbf{Paper 1: Bio-signal based emotion detection device}
+
+In diesem Artikel wird eine Echtzeit-Emotionserkennung Vorrichtung, die Herzfrequenz- und Hautleitfähigkeit Sensoren verwendet vorgestellt. 
+Die Leistung des Geräts wird anhand von Experimenten bewertet, die es den Probanden ermöglichten, audiovisuelle Clips in verschiedenen emotionalen Kategorien anzusehen. 
+Um die Machbarkeit der Verwendung von Biosignalen zur Vorhersage von Emotionen zu überprüfen, werden außerdem die von einer Webcam aufgenommenen Gesichtsausdrücke parallel zum Vergleich und Kontrast verarbeitet. 
+Die experimentelle Studie wurde mit sechs Probanden durchgeführt und der Artikel wurde 2016 veröffentlicht. \\
+
+
+\textbf{Paper 2: Noncontact measurement of emotional and physiological changes in heart rate from a webcam}
+
+In diesem dokument wird eine Emotionserkennung  Vorrichtung zum Erkennen subtiler Abweichungen der Gesichtsfarbe (mit bloßem Auge nicht erkennbar, aber mit einer Webcam) aufgrund der Änderung der Herzfrequenz. 
+Die Herzfrequenz, gemessen in Schlägen pro Minute, kann als Indikator für den physiologischen Zustand einer Person verwendet werden. 
+Jedes Mal, wenn das Herz schlägt, wird Blut ausgeschieden und zirkuliert im Körper. 
+Dieser Blutfluss kann im Gesicht mit einer Standard-Webcam erfasst werden, die in der Lage ist, subtile Farbveränderungen zu erfassen, die mit bloßem Auge nicht sichtbar sind. 
+Aufgrund des Absorptionsspektrums des Blutlichts sind wir in der Lage, Unterschiede in der Lichtmenge zu erkennen, die von dem sich direkt unter der Haut bewegenden Blut aufgenommen wird (z. B. Photoplethysmographie). 
+Durch die Modulation von emotionalem und physiologischem Stress, d.h. das Betrachten von spannenden Bildern und das Sitzen bzw. Stehen, um Veränderungen der Herzfrequenz zu bewirken, haben wir die Machbarkeit der Verwendung einer Webcam zur psychophysiologischen Messung der autonomen Aktivität untersucht. 
+Wir fanden ein hohes Maß an Übereinstimmung zwischen den etablierten physiologischen Messungen, dem Elektrokardiogramm, der Blutpulsoximetrie und den Webcam-Pulsschätzungen. 
+Wir empfehlen daher, dass Webcams als nicht-invasive und leicht verfügbare Methode zur Messung psychophysiologischer Veränderungen verwendet werden können, die leicht in bestehende Software- und Hardwarekonfigurationen zur Präsentation von Reizen integriert werden kann. 
+Das Experiment wurde mit 24 Teilnehmern durchgeführt und der Artikel wurde 2017 veröffentlicht. \\
+
+
+\textbf{Paper 3: Coverage of emotion recognition for common wearable biosensors}
+
+Diese Forschung schlägt einen neuen Emotionserkennungsrahmen für die computergestützte Vorhersage menschlicher Emotionen mit Hilfe von Biosensoren vor. 
+Die emotionale Wahrnehmung fördert spezifische Muster biologischer Reaktionen im menschlichen Körper, und dies kann gespürt und genutzt werden, um Emotionen nur mit biomedizinischen Methoden vorherzusagen. 
+Basierend auf theoretischer und empirischer psychophysiologischer Forschung ermöglicht die Grundlage der autonomen Spezifität die Schaffung einer soliden Grundlage für die Erkennung menschlicher Emotionen durch maschinelles Lernen an physiologischen Modellen. 
+Eine systematische Auswahl physiologischer Daten über die emotionalen Reaktionen, die zur Erkennung von Zielemotionen ausgelöst werden, ist jedoch nicht offensichtlich. 
+Diese Studie zeigt durch experimentelle Messungen die Abdeckung der Emotionserkennung mit gängigen tragbaren Biosensoren, basierend auf der Synchronisation zwischen audiovisuellen Reizen und entsprechenden physiologischen Reaktionen. 
+Die Arbeit bildet die Grundlage für die Validierung der Hypothese der emotionalen Zustandserkennung in der Literatur und stellt die Abdeckung der Verwendung von gängigen tragbaren Biosensoren in Verbindung mit einem neuen Vorbehandlungsalgorithmus zur Demonstration der praktischen Vorhersage der emotionalen Zustände von Trägern dar. 
+Das Experiment wurde mit 10 Teilnehmern durchgeführt und der Artikel wurde 2018 veröffentlicht. \\
+
+
+\textbf{Paper 4: Intelligent data analysis algorithms on biofeedback signals for estimating emotions}
+
+ Das übergeordnete Ziel dieser Arbeit ist es, ein energiesparendes, tragbares und kostengünstiges eingebettetes System zu entwerfen und zu entwickeln, mit dem wir verschiedene Parameter des autonomen Nervensystems einer Person (GSR/Temperatur/Temperatur/Temperatur/Temperatur/Herzfrequenz/EEG) messen und auf jedem der Ausgabegeräte anzeigen können, wobei ein effektiver Algorithmus zur Stresserkennung mit Lernsystemen verwendet wird. 
+ Dieses tragbare On-Board-System wird den Texas Instruments MSP430F2013 Mikrocontroller verwenden. 
+ Dieses System wird es ermöglichen, verschiedene Parameter wie GSR und BVP zu messen. 
+ In diesem Artikel wird auch ein Experiment diskutiert, das die Reize identifiziert, die den emotionalen Zustand der Person als Folge von Schwankungen der Biosignale auslösen. 
+ Diese Arbeit wurde 2014 veröffentlicht und 10 Probanden haben an das Experiment teilgenommen. \\
+
+
+\textbf{Paper 5: Determination of stress using blood pressure and galvanic skin response}
+
+Dieses Papier stellt eine Vorrichtung zur Erkennung von Stress mittels galvanischer Hautreaktion (GSR) und Blutdruck (BP) vor. 
+Stress ist eine Antwort auf die psychischen, emotionalen oder physischen Aspekte des täglichen Lebens. 
+Um Stress zu bewältigen, ist es notwendig, das Stressniveau kontinuierlich zu überwachen. 
+Individuelle physiologische Parameter wie galvanische Hautreaktion (GSR), Herzfrequenz (HR), Blutdruck (BP), EKG (Elektrokardiographie) und Atmungsaktivität können als Maß zur Stressbestimmung herangezogen werden. 
+Die Genauigkeit der Bestimmung ist jedoch durch die Verwendung einzelner Parameter eingeschränkt. 
+Die Verwendung mehrerer Parameter hilft, Stress besser zu bestimmen. 
+Eine Kombination von Parametern wie GSR und Blutdruck erhöht die Genauigkeit weiter. 
+Ziel ist es, eine bessere Stresserkennung mit GSR und BP zu erreichen. 
+Diese Arbeit wurde mit Hilfe von 25 Teilnehmern durchgeführt und 2014 veröffentlicht. \\
+
+
+\textbf{Paper 6: Effectiveness of immersive videos in inducing awe: an experimental study}
+
+Die Furcht, eine komplexe Emotion, die sich aus den Bewertungskomponenten Weite und Bedürfnis nach Unterkunft zusammensetzt, ist eine tiefe und oft sinnvolle Erfahrung. 
+Trotz ihrer Bedeutung haben Psychologen erst vor kurzem mit der empirischen Untersuchung von Furcht begonnen. 
+Auf der experimentellen Ebene geht es vor allem darum, wie man hochintensive Awe-Erfahrungen im Labor hervorrufen kann. 
+Um dieses Problem anzugehen, wurde Virtual Reality (VR) als mögliche Lösung vorgeschlagen. 
+Hier haben wir die höchste realistische Form von VR betrachtet: immersive Videos. 
+42 Teilnehmer sahen sich immersive und normale 2D-Videos an, die eine Furcht oder einen neutralen Inhalt zeigten. 
+Nach der Erfahrung bewerteten sie ihre Furcht und ihr Gefühl der Präsenz. 
+Die psychophysiologischen Reaktionen der Teilnehmer (BVP, SC, sEMG) wurden während der gesamten Videoaufnahme aufgezeichnet. 
+Wir haben angenommen, dass die immersive Videobedingung die Intensität der Furcht im Vergleich zu 2D-Bildschirmvideos erhöhen würde. 
+Die Ergebnisse zeigten, dass immersive Videos die selbstberichtete Intensität der Ehrfurcht und das Gefühl der Präsenz deutlich erhöhten. 
+Immersive Videos mit beeindruckendem Inhalt führten auch zu einer höheren parasympathischen Aktivierung. 
+Diese Ergebnisse zeigen die Vorteile der Verwendung von VR in der experimentellen Studie von Furcht, mit methodischen Implikationen für die Untersuchung anderer Emotionen. \\
+
+
+\textbf{Paper 7: Multimodal biosignal sensor data handling for emotion recognition}
+
+Wir präsentieren einen Versuchsaufbau, eine Sensordatenverarbeitung und einen Bewertungsrahmen für die Emotionserkennung, basierend auf multimodalen Daten von biologischen Signalgebern.  
+Für die markierte Datenerfassung haben wir einen Emotionsauslöserblock entwickelt, mit einem Datenbank mit beschrifteten Videos, die verschiedene auslösende Reize enthalten. 
+Eine Biosignal-Erfassungsvorrichtung wurde verwendet, um multimodale Daten zu erfassen, und zwar: 
+Elektromyographie (EMG); Elektrokardiographie (EKG); Elektrodermale Aktivität (EDA); Blutvolumenpuls (BVP); Peripherietemperatur (SKT); und Atmung(RESP). 
+Eine automatisierte Biosignalverarbeitung und Merkmalsextraktionswerkzeugkasten wurde entwickelt, um Rohdaten in aussagekräftige Parameter umzuwandeln. 
+Experimentelle Ergebnisse zeigten Trends, die mit auslösenden Ereignissen verbunden sind, und bildeten eine Grundlage für die Emotionserkennung. 
+Durch LOOCV mit einem k-NN-Klassifikator erhielten wir Erkennungsraten von 81\%, um zwischen positiven und negativen Emotionen zu unterscheiden, und von 70\%, um zwischen positiven, neutralen und negativen Emotionen zu unterscheiden. \\
+
+
+\textbf{Paper 8: What’s your current stress level? Detection of stress patterns from GSR sensor data}
+
+Das Problem des Stress am Arbeitsplatz wird allgemein als einer der Hauptfaktoren anerkannt, der zu einem Spektrum von Gesundheitsproblemen führt. 
+Menschen mit bestimmten Berufen, wie Intensivpfleger oder Call-Center-Betreiber, und Menschen in bestimmten Lebensphasen, wie berufstätige Eltern mit kleinen Kindern, sind einem erhöhten Risiko ausgesetzt, überfordert zu werden. 
+Stressmanagement sollte weit vor dem Stressbeginn beginnen, der Krankheiten verursacht. 
+Der aktuelle Stand der Sensorik ermöglicht es, Systeme zu entwickeln, die körperliche Symptome messen und das Stressniveau widerspiegeln. 
+In diesem Papier formulieren wir das Problem der Stressidentifikation und -kategorisierung aus der Sicht des Sensor Data Stream Mining, betrachten einen reduktionistischen Ansatz zur Erregungsidentifikation als Driftdetektionsaufgabe, heben die Hauptprobleme des Umgangs mit GSR-Daten hervor, die von einem Uhren-Stressmessgerät in normalen (d.h. nicht-laborellen) Umgebungen gesammelt wurden, und schlagen einfache Ansätze vor, wie damit umzugehen ist, und diskutieren die Erfahrungen aus der experimentellen Studie mit realen GSR-Daten, die während der aktuellen Feldstudie gesammelt wurden. \\
+
+
+\textbf{Paper 9: Bodily maps of emotions}
+
+Emotionen werden oft im Körper gespürt, und somatosensorisches Feedback wurde vorgeschlagen, um bewusste emotionale Erfahrungen auszulösen. 
+Hier zeigen wir Karten von Körperempfindungen, die mit verschiedenen Emotionen verbunden sind, mit einer einzigartigen topographischen Selbstberichtsmethode. 
+In fünf Experimenten wurden den Teilnehmern (n = 701) zwei Silhouetten von Körpern neben emotionalen Worten, Geschichten, Filmen oder Gesichtsausdrücken gezeigt. Sie wurden gebeten, die Körperregionen zu färben, deren Aktivität sie sich beim Betrachten der einzelnen Reize erhöht oder verringert haben. 
+Verschiedene Emotionen wurden konsequent mit statistisch trennbaren Körperempfindlichkeitskarten experimentell verknüpft. 
+Diese Karten waren übereinstimmend mit westeuropäischen und ostasiatischen Stichproben. Statistische Klassifikatoren unterschieden emotionsspezifische Aktivierungskarten genau und bestätigten die Unabhängigkeit von Topographien über Emotionen hinweg. Wir schlagen vor, dass Emotionen im somatosensorischen System als kulturell universelle kategorische somatotopische Karten dargestellt werden. Die Wahrnehmung dieser durch Emotionen ausgelösten körperlichen Veränderungen kann eine Schlüsselrolle bei der Erzeugung bewusst empfundener Emotionen spielen. \\
+
+
+\subsubsection{Vorstellung unsere Ergebnisse}
+
+Die Entwicklung unserer Entscheidungsmatrix hat uns zwei Tabellen gegeben (siehe Anhang). 
+Die erste Tabelle mit dem Namen Justizmatrix, in der die in den Artikeln gefundenen Elemente zur Ungültigkeit oder Bestätigung der Regeln (Kriterien) notiert werden, und eine zweite Tabelle mit dem Namen Score-Matrix, in der die verschiedenen Bewertungen, die den Elementen der ersten Tabelle entsprechen, aufgezeichnet werden. 
+Diese Trennung ermöglicht einen besseren Überblick und ein besseres Verständnis der geleisteten Arbeit. 
+Dieser Prozess (``Plan B'') hat es ermöglicht, bestimmte Grundregeln für eine kurze Interpretation unserer Daten zu entwickeln, wie z.B.: \\
+$\bullet$ Diegalvanische Leitfähigkeit der Haut (GSC) und Herzfrequenz steigen mit Angst und sinken mit Traurigkeit (aus Paper 1); \\
+$\bullet$ Oder dass es einen Temperaturanstieg im Falle von Glück oder Gefahr und einen Rückgang im Falle von Traurigkeit gibt (siehe Papier 9).\\
+Alle so erhaltenen Elemente sind in der Tabelle entsprechend der Begründungsmatrix lesbar(siehe Anhang).
+Darüber hinaus ermöglicht uns die Score-Matrix nach den oben erläuterten Kriterien, die verschiedenen ausgewählten Artikel zu klassifizieren und beispielsweise zu dem Schluss zu kommen, dass die Elemente des Artikels mit dem Titel:``Multimodal biosignal sensor data handling for emotion recognition'' (Paper 7) für unseren Ansatz (Plan B) am zuverlässigsten sind, während der Artikel ``Intelligent data analysis algorithms on biofeedback signals for estimating emotions'' am zuverlässigsten ist. (Paper 4) hat eine Reihe von Mängel.
