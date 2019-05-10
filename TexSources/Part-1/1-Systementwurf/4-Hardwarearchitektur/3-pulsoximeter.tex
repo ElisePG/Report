@@ -2,11 +2,21 @@
 
 Als Pulsoximeter kam bei dem Projekt durchgehend der MAX30102 von der Firma Maxim Integrated zum Einsatz. Bei diesem Bauteil handelt es sich um ein schon mit dem MAX30100, sowie der dazugehörigen Peripherie, bestücktem Board(siehe Abbildung 3.2.2.1). Der MAX30102 wird wie auch der Temperatursensor über den I2C-Bus mit unserem Messboard verbunden.
 
-%BILD
+\begin{figure}[H] \centering
+\includegraphics[width=\textwidth]{Images/MAX30102.png} 
+\vspace{-0.3cm} 
+\caption{Abb. MAX30102-Sensorboard. Vollständig vom Hersteller bestückt und bereit zur Verwendung}
+\label{fig-elise} 
+\end{figure}
 
 Die Datenübertragung erfolgt wie auch beim MLX90614 mit einer Rate von  100.000 kbit/s. Der Sensor selbst verfügt über einen 16-Ebenen tiefen FIFO, in dem die Werte gespeichert und über den I2C-Bus auch ausgelesen werden können. Der Sensor selbst verfügt über LEDs (rot und infrarot), für die sowohl der Betriebsstrom, zwischen 0 und 50 mA,, als auch die Pulsbreite zwischen 200mirkos und 1,6mikros über den I2C-bus programmiert werden können. Abbildung Y zeigt das Systemdiagramm des MAX30102 auf dem die Funktion des Sensor aufgeführt ist. So wird die Messstelle von den auf dem Messboard befindlichen LEDs angeleuchtet, und dann wird mittels einer Photodiode der Reflektierte Anteil des Lichtimpulses gemessen.
 
-%BILD
+\begin{figure}[H] \centering
+\includegraphics[width=\textwidth]{Images/Systemdiagramm.png} 
+\vspace{-0.3cm} 
+\caption{Abb.  Systemdiagramm des MAX30102.}
+\label{fig-elise} 
+\end{figure}
 
 Dabei sind selbst Funktionen zur Unterdrücken von Umgebungsbeleuchtung und Rauschen schon auf dem Messboard enthalten.
 

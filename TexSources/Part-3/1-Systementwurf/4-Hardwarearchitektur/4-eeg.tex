@@ -1,6 +1,14 @@
 \subsubsection{EEG} \label{eeg-subsubsec}
 
+Für den zweiten Prototypen wurde die Schaltung zur Messung von EEG Signalen komplett überarbeitet. Durch die Verwendung eines eigens für EEG-Messungen entworfenen Chips fielen große Teile der zuvor verwendeten Schaltung zur Verstärkung und Filterung des Signales weg, dies war mit einer Signifikanten Platzersparnis verbunden. Bei dem verwendeten Chip handelt es sich um den ADS1299 von Texas Instruments. 
 
+Dieser speziell für EEG Anwendungen entworfene Chip verfügt über bis zu 8 Kanäle zur Signalmessung. Diese Kanäle stellen jeweils die beiden Eingänge eines Differenzverstärkers dar. Dadurch ist die Messung von EEG Signalen sowohl in Referentieller als auch Differentieller Schaltung möglich. Bei der Referentiellen Messung werden alle Messpunkte im Vergleich zu einer Referenzelektrode gemessen. In unserem Fall haben wir uns auf die differentielle Messung von EEG Signalen beschränkt, in diesem wird das EEG Signal zwischen zwei Messpunkten bestimmt. 
+
+Ein weiterer Vorteil des ADS1299 ist die Programmierbarkeit über die eingebaute SPI-Schnittstelle. So ist es möglich den Programmable-Gain-Aplifier (PGA) für verschiedene Auflösung der Messsignals einzustellen. Dies macht die Verwendung des ADS1299 auch für nicht EEG-Signale möglich. In unserem Fall wurde die größtmögliche Auflösung zur Messung des EEG gewählt, dies hatte zwar eine Einschränkung des Wertebereichs zur Folge, dies war bei der differentiellen Messung allerdings kein Problem.
+
+Zusätzlich zur vom Hersteller vorgeschlagenen Beschaltung in Bezug auf Energieversorgung und SPI-Kommunikation mit dem verwendeten Mikrocontroller, wurde lediglich ein RC-Tiefpass zwischen den Signalelektroden und den Kanaleingängen des ADS1299 verwendet. Dies ermöglicht schon von vorneherein das Ausfiltern von zu Großen Signalfrequenzen (siehe dazu auch Kapitel 3.5.5 Elektroenzephalographie (EEG) ). Das Signal wird aber auch nochmal zusätzlich Digital gefiltert, um ein möglichst präzises Ergebnis zu erzielen.
+
+Zur Messung des EEG-Signals werden in unserem Fall zwei Kanäle benötigt, da wir hier nur die Hirnströme beidseitig zwischen Schläfe und knapp hinter dem Ohr messen.
 
 
 
