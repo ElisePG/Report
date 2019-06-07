@@ -1,7 +1,5 @@
 \subsection{Plan B} \label{plan-b-4}
 
-\todo[inline]{Verantwortlich: Arnaud}
-
 
 \subsubsection{Lösungsbeschreibung}
 
@@ -9,9 +7,10 @@ Die Analyse der gesammelten Daten ist eine ziemlich mühsame Aufgabe, die nicht 
 Aufgrund der hohen Teilnehmerzahl an unserer Studie haben wir eine ebenso hohe Datenmenge erhoben. 
 Wir haben uns daher entschlossen, einen anderen Ansatz zu entwickeln, so dass auch eine zusammenfassende Verwendung der erhobenen Daten möglich ist. 
 Die Idee war, nach anderen Arbeiten über die Erkennung von Emotionen zu suchen(und finden); 
-zuerst diese Arbeiten mit unseren zu vergleichen, um unsere ersten Beobachtungen zu bestätigen oder zu annullieren, dann einfache Regeln festzulegen, die eine schnelle Verwendung der Daten ermöglichen könnten;
-zum Beispiel, um eine klare Beziehung zwischen der Veränderung der Werte eines biophysiologischen Signals und der Veränderung der Intensität einer Emotion herzustellen. Ziel dieser ``Plan B'' ist uns zu ermöglichen eine abgeschwächte Emotionserkennung ohne Mustererkennung vor, die alleine auf den Rohdaten unser Sensoren arbeitet. 
-Die Aufgabe besteht nun darin, für alle Sensorwerte die wir haben (Puls, Hautleitfähigkeit (GSR), EOG, EEG, Temperatur), solche verleichsweise einfachen Beziehungen (also KEIN Deep-learning etc.) in der Literatur oder Forschungsarbeiten zu finden, damit wir uns auf diese berufen können.
+zuerst diese Arbeiten mit unseren zu vergleichen, um unsere ersten Beobachtungen zu bestätigen oder zu annullieren, dann einfache Regeln festzulegen, die eine schnelle Verwendung der Daten ermöglichen könnten; 
+zum Beispiel, um eine klare Beziehung zwischen der Veränderung der Werte eines biophysiologischen Signals und der Veränderung der Intensität einer Emotion herzustellen. 
+Ziel dieser ``Plan B'' ist uns zu ermöglichen eine abgeschwächte Emotionserkennung ohne Mustererkennung vor, die alleine auf den Rohdaten unser Sensoren arbeitet. 
+Die Aufgabe besteht nun darin, für alle Sensorwerte die wir haben (Puls, Hautleitfähigkeit (GSR), EOG, EEG, Temperatur), solche verleichsweise einfachen Beziehungen (also KEIN Deep-learning etc.) in der Literatur oder Forschungsarbeiten zu finden, damit wir uns auf diese berufen können. 
 Dieser Ansatz wird sich jedoch nicht so einfach wie erwartet gestalten und auch seinen Teil der Schwierigkeiten mit sich bringen. \\
 
 
@@ -34,6 +33,8 @@ Gewichtungen liegen auf einer Skala von ``1 niedrige Wichtigkeit'' bis ``7 hohe 
 Alle zu vergleichenden Objekte bekommen pro Kriterium eine Bewertung von eins bis sieben. 
 Pro Kriterium werden alle zu bewertenden Objekte betrachtet und dann mit einer Zahl versehen, wobei das Objekt bei dem das Kriterium am zutreffendsten ist, die höchste Zahl bekommt und das Objekt mit der niedrigsten Übereinstimmung die niedrigste Zahl. 
 Die Summe dieser Bewertungen ergibt am Ende die Gewichtung des einzelnen Objekts, indem die zuvor vergebene Zahl mit der Gewichtung (weight) multipliziert und alle resultierenden Zahlen dann pro Spalte addiert werden. 
+Unsere Entscheidungsmatrix besteht somit aus zwei Tabellen: 
+Die erste stellt die Begründungsmatrix (siehe Tabelle 11) dar, die die Kriterien gruppiert, und die zweite die Bewertungsmatrix (siehe Tabelle 12), die die Bewertungen der Artikel nach den Kriterien der Begründungsmatrix gruppiert.
 
 
 
@@ -124,7 +125,7 @@ Die Summe dieser Bewertungen ergibt am Ende die Gewichtung des einzelnen Objekts
   \end{table}%
 
 
-\subsubsection{Auswahlkriterien für die Entwicklung der Entscheidungsmatrix}
+\subsubsection{Auswahlkriterien der Entscheidungsmatrix}
 
 Für die Entwicklung unserer Entscheidungsmatrix haben wir sieben Auswahlkriterien (``Rule'') definiert, die wir Ihnen hier erläutern, indem wir deren Bedeutung(und Wichtigkeit) für die Auswahl der Artikel angeben. 
 Wir möchten darauf hinweisen, dass jedes Kriterium entsprechend seiner Bedeutung eine der folgenden Gewichte erhält: 
@@ -233,16 +234,7 @@ Die Arbeit bildet die Grundlage für die Validierung der Hypothese der emotional
 Das Experiment wurde mit 10 Teilnehmern durchgeführt und der Artikel wurde 2018 veröffentlicht. \\
 
 
-\textbf{Paper 4: Intelligent data analysis algorithms on biofeedback signals for estimating emotions}
-
- Das übergeordnete Ziel dieser Arbeit ist es, ein energiesparendes, tragbares und kostengünstiges eingebettetes System zu entwerfen und zu entwickeln, mit dem wir verschiedene Parameter des autonomen Nervensystems einer Person (GSR/Temperatur/Temperatur/Temperatur/Temperatur/Herzfrequenz/EEG) messen und auf jedem der Ausgabegeräte anzeigen können, wobei ein effektiver Algorithmus zur Stresserkennung mit Lernsystemen verwendet wird. 
- Dieses tragbare On-Board-System wird den Texas Instruments MSP430F2013 Mikrocontroller verwenden. 
- Dieses System wird es ermöglichen, verschiedene Parameter wie GSR und BVP zu messen. 
- In diesem Artikel wird auch ein Experiment diskutiert, das die Reize identifiziert, die den emotionalen Zustand der Person als Folge von Schwankungen der Biosignale auslösen. 
- Diese Arbeit wurde 2014 veröffentlicht und 10 Probanden haben an das Experiment teilgenommen. \\
-
-
-\textbf{Paper 5: Determination of stress using blood pressure and galvanic skin response}
+\textbf{Paper 4: Determination of stress using blood pressure and galvanic skin response}
 
 Dieses Papier stellt eine Vorrichtung zur Erkennung von Stress mittels galvanischer Hautreaktion (GSR) und Blutdruck (BP) vor. 
 Stress ist eine Antwort auf die psychischen, emotionalen oder physischen Aspekte des täglichen Lebens. 
@@ -255,7 +247,7 @@ Ziel ist es, eine bessere Stresserkennung mit GSR und BP zu erreichen.
 Diese Arbeit wurde mit Hilfe von 25 Teilnehmern durchgeführt und 2014 veröffentlicht. \\
 
 
-\textbf{Paper 6: Effectiveness of immersive videos in inducing awe: an experimental study}
+\textbf{Paper 5: Effectiveness of immersive videos in inducing awe: an experimental study}
 
 Die Furcht, eine komplexe Emotion, die sich aus den Bewertungskomponenten Weite und Bedürfnis nach Unterkunft zusammensetzt, ist eine tiefe und oft sinnvolle Erfahrung. 
 Trotz ihrer Bedeutung haben Psychologen erst vor kurzem mit der empirischen Untersuchung von Furcht begonnen. 
@@ -271,7 +263,7 @@ Immersive Videos mit beeindruckendem Inhalt führten auch zu einer höheren para
 Diese Ergebnisse zeigen die Vorteile der Verwendung von VR in der experimentellen Studie von Furcht, mit methodischen Implikationen für die Untersuchung anderer Emotionen. \\
 
 
-\textbf{Paper 7: Multimodal biosignal sensor data handling for emotion recognition}
+\textbf{Paper 6: Multimodal biosignal sensor data handling for emotion recognition}
 
 Wir präsentieren einen Versuchsaufbau, eine Sensordatenverarbeitung und einen Bewertungsrahmen für die Emotionserkennung, basierend auf multimodalen Daten von biologischen Signalgebern.  
 Für die markierte Datenerfassung haben wir einen Emotionsauslöserblock entwickelt, mit einem Datenbank mit beschrifteten Videos, die verschiedene auslösende Reize enthalten. 
@@ -282,7 +274,7 @@ Experimentelle Ergebnisse zeigten Trends, die mit auslösenden Ereignissen verbu
 Durch LOOCV mit einem k-NN-Klassifikator erhielten wir Erkennungsraten von 81\%, um zwischen positiven und negativen Emotionen zu unterscheiden, und von 70\%, um zwischen positiven, neutralen und negativen Emotionen zu unterscheiden. \\
 
 
-\textbf{Paper 8: What’s your current stress level? Detection of stress patterns from GSR sensor data}
+\textbf{Paper 7: What’s your current stress level? Detection of stress patterns from GSR sensor data}
 
 Das Problem des Stress am Arbeitsplatz wird allgemein als einer der Hauptfaktoren anerkannt, der zu einem Spektrum von Gesundheitsproblemen führt. 
 Menschen mit bestimmten Berufen, wie Intensivpfleger oder Call-Center-Betreiber, und Menschen in bestimmten Lebensphasen, wie berufstätige Eltern mit kleinen Kindern, sind einem erhöhten Risiko ausgesetzt, überfordert zu werden. 
@@ -291,7 +283,7 @@ Der aktuelle Stand der Sensorik ermöglicht es, Systeme zu entwickeln, die körp
 In diesem Papier formulieren wir das Problem der Stressidentifikation und -kategorisierung aus der Sicht des Sensor Data Stream Mining, betrachten einen reduktionistischen Ansatz zur Erregungsidentifikation als Driftdetektionsaufgabe, heben die Hauptprobleme des Umgangs mit GSR-Daten hervor, die von einem Uhren-Stressmessgerät in normalen (d.h. nicht-laborellen) Umgebungen gesammelt wurden, und schlagen einfache Ansätze vor, wie damit umzugehen ist, und diskutieren die Erfahrungen aus der experimentellen Studie mit realen GSR-Daten, die während der aktuellen Feldstudie gesammelt wurden. \\
 
 
-\textbf{Paper 9: Bodily maps of emotions}
+\textbf{Paper 8: Bodily maps of emotions}
 
 Emotionen werden oft im Körper gespürt, und somatosensorisches Feedback wurde vorgeschlagen, um bewusste emotionale Erfahrungen auszulösen. 
 Hier zeigen wir Karten von Körperempfindungen, die mit verschiedenen Emotionen verbunden sind, mit einer einzigartigen topographischen Selbstberichtsmethode. 
@@ -300,13 +292,30 @@ Verschiedene Emotionen wurden konsequent mit statistisch trennbaren Körperempfi
 Diese Karten waren übereinstimmend mit westeuropäischen und ostasiatischen Stichproben. Statistische Klassifikatoren unterschieden emotionsspezifische Aktivierungskarten genau und bestätigten die Unabhängigkeit von Topographien über Emotionen hinweg. Wir schlagen vor, dass Emotionen im somatosensorischen System als kulturell universelle kategorische somatotopische Karten dargestellt werden. Die Wahrnehmung dieser durch Emotionen ausgelösten körperlichen Veränderungen kann eine Schlüsselrolle bei der Erzeugung bewusst empfundener Emotionen spielen. \\
 
 
+\textbf{Paper 9: Intelligent data analysis algorithms on biofeedback signals for estimating emotions}
+
+Das übergeordnete Ziel dieser Arbeit ist es, ein energiesparendes, tragbares und kostengünstiges eingebettetes System zu entwerfen und zu entwickeln, mit dem wir verschiedene Parameter des autonomen Nervensystems einer Person (GSR, Temperatur, Herzfrequenz, EEG) messen und auf jedem der Ausgabegeräte anzeigen können, wobei ein effektiver Algorithmus zur Stresserkennung mit Lernsystemen verwendet wird. 
+Dieses tragbare On-Board-System wird den Texas Instruments MSP430F2013 Mikrocontroller verwenden. 
+Dieses System wird es ermöglichen, verschiedene Parameter wie GSR und BVP zu messen. 
+In diesem Artikel wird auch ein Experiment diskutiert, das die Reize identifiziert, die den emotionalen Zustand der Person als Folge von Schwankungen der Biosignale auslösen. 
+Diese Arbeit wurde 2014 veröffentlicht und 10 Probanden haben an das Experiment teilgenommen. \\
+
+
 \subsubsection{Vorstellung unsere Ergebnisse}
 
-Die Entwicklung unserer Entscheidungsmatrix hat uns zwei Tabellen gegeben (siehe Anhang). 
-Die erste Tabelle mit dem Namen Justizmatrix, in der die in den Artikeln gefundenen Elemente zur Ungültigkeit oder Bestätigung der Regeln (Kriterien) notiert werden, und eine zweite Tabelle mit dem Namen Score-Matrix, in der die verschiedenen Bewertungen, die den Elementen der ersten Tabelle entsprechen, aufgezeichnet werden. 
-Diese Trennung ermöglicht einen besseren Überblick und ein besseres Verständnis der geleisteten Arbeit. 
-Dieser Prozess (``Plan B'') hat es ermöglicht, bestimmte Grundregeln für eine kurze Interpretation unserer Daten zu entwickeln, wie z.B.: \\
-$\bullet$ Diegalvanische Leitfähigkeit der Haut (GSC) und Herzfrequenz steigen mit Angst und sinken mit Traurigkeit (aus Paper 1); \\
-$\bullet$ Oder dass es einen Temperaturanstieg im Falle von Glück oder Gefahr und einen Rückgang im Falle von Traurigkeit gibt (siehe Papier 9).\\
-Alle so erhaltenen Elemente sind in der Tabelle entsprechend der Begründungsmatrix lesbar(siehe Anhang).
-Darüber hinaus ermöglicht uns die Score-Matrix nach den oben erläuterten Kriterien, die verschiedenen ausgewählten Artikel zu klassifizieren und beispielsweise zu dem Schluss zu kommen, dass die Elemente des Artikels mit dem Titel:``Multimodal biosignal sensor data handling for emotion recognition'' (Paper 7) für unseren Ansatz (Plan B) am zuverlässigsten sind, während der Artikel ``Intelligent data analysis algorithms on biofeedback signals for estimating emotions'' am zuverlässigsten ist. (Paper 4) hat eine Reihe von Mängel.
+Wie in der Einleitung zu diesem Abschnitt angedeutet, besteht der Zweck des ``Plan B''-Prozesses nicht nur darin, eine vergleichende Studie zwischen unserer Arbeitsmethode und anderen validierten Arbeiten durchzuführen, um unsere Annahmen zu stärken, sondern auch einfache Regeln für die möglichen Zusammenhänge zu definieren, die zwischen der Variation der Intensität der emotionalen Erfahrung (oder einer Emotion) und biophysiologischen Signalen bestehen können. 
+Die Verwendung der Entscheidungsmatrix liefert uns die Tabellen 11 und 12.
+Tabelle 11 (Begründungsmatrix) ermöglicht es, die verschiedenen ausgewählten Artikel anhand der vorgegebenen Kriterien zu analysieren (siehe Abschnitt 19.2.4). 
+Diese unterschiedlichen Kriterien ermöglichen es uns, den Inhalt der jeweiligen Artikel zu analysieren und auch die von uns gesuchten Regeln hervorzuheben. 
+Wir haben also bestimmte Grundregeln für eine kurze Interpretation unserer Daten zu entwickeln, wie z.B.:\\
+$\bullet$ Die galvanische Leitfähigkeit der Haut (GSC) und Herzfrequenz steigen mit Angst und sinken mit Traurigkeit (aus Paper 1); \\
+$\bullet$ Oder dass es einen Temperaturanstieg im Falle von Glück oder Gefahr und einen Rückgang im Falle von Traurigkeit gibt (siehe Papier 8). \\
+All die verschiedenen Regeln, die wir in dieser Begründungsmatrix festlegen konnten (siehe Tabelle 11).
+Die Bewertungsmatrix (Tabelle 12) ermöglicht es uns, die Relevanz der Artikel anhand der Bewertung, die wir ihnen nach den Kriterien geben, zu beurteilen. 
+Genau diese Bewertung ermöglicht es uns, nicht nur die von uns ausgewählten Artikel zu validieren. 
+Diese Bewertungsmatrix ermöglicht es uns auch, unsere Gegenstände nach der Gesamtpunktzahl zu bewerten. 
+So ist es möglich, nach den in der Begründungsmatrix vorgegebenen Kriterien zu bestätigen, welche die besten Artikel (nach diesen Kriterien) sind. 
+So sind die besten Artikel mit den entsprechenden Werten von ``72'' und ``70'' Papier 6 und Papier 1.
+In diesem Zusammenhang die Verwendung der Entscheidungsmatrix auf Papier 9 hätte  eine Gesamtpunktzahl von ``16'' (was ihn zum schlechtesten Papier gemacht hätte) geliefert, verteilt wie folgt: 
+Kriterium 1 Punktzahl von 1, Kriterium 2 Punktzahl von 2, Kriterium 3 Punktzahl von 2, Kriterium 4 Punktzahl von 2, Kriterium 5 Punktzahl von 0, Kriterium 6 Punktzahl von 0, Kriterium 7 Punktzahl von 1. 
+Neben der Tatsache, dass die Gesamtnote dieses Papiers sehr schlecht war, haben wir es von dem Prozess ausgeschlossen, vor allem wegen der Bewertung der Regeln ``5'' und ``6'', die unsere wichtigsten Regeln sind.

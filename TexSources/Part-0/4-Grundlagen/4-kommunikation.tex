@@ -1,6 +1,5 @@
 \subsection{Kommunikation} \label{grund-kommunikation}
 
-\todo[inline]{Verantwortlich: Kevin, Jonas}
 
 Da insbesondere bei der Messung von EEG,EOG und GSR relativ kleine Spannungsunterschiede betrachtet werden, ist es wichtig gerade diese analogen Signale wenig zu beeinträchtigen. Diese Signale werden mittels Elektroden gemessen. Ziel war es also eine möglichst Störungsfreie Kommunikation zum einen zwischen den einzelnen Sensoren und der PCB als auch zwischen der PCB und einen Computer, auf dem die Rohdaten verarbeitet werden sollen, zu ermöglichen. Um die Einwirkung von Rauschen auf die oben genannten analogen Signale schon von vorneherein zu minimieren, wurde die Übertragungsstrecke zwischen Elektroden und PCB in späteren Versionen so kurz wie möglich gehalten. Alle analogen Signale werden dann in digitale Signale umgewandelt, und direkt Drahtlos an einen empfangenden Rechner gesendet, der die Daten zur späteren Bearbeitung abspeichert. Die Drahtlose Übertragung wurde in der ursprünglichen Variante mittels Bluetooth realisiert, wobei die Daten am empfangenden Rechner mittels Serialplot direkt visualisiert, und dann auch abgespeichert wurden. Bei dieser visuellen Darstellung, werden die Rohdaten lediglich auf einer Zeitachse aufgetragen. Der Vorteil dabei ist, dass sofort eine zumindest grobe Einschätzung, ob die Daten korrekt sind, möglich ist.
 
